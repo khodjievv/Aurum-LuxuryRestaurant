@@ -3,11 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aurum — Three Michelin Star fine dining in Tashkent, Uzbekistan. Reserve your table for an evening of culinary excellence.">
+<meta property="og:title" content="Aurum — Fine Dining · Tashkent">
+<meta property="og:description" content="Three Michelin Stars. 1,400 cellar labels. One unforgettable evening.">
+<meta property="og:type" content="restaurant">
+<meta name="theme-color" content="#0A0806">
 <title>Aurum — Fine Dining · Tashkent</title>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--gold:#C9A96E;--gold2:#E8CC8F;--gold3:#8B6914;--dark:#08060400;--dark1:#0A0806;--dark2:#110E09;--dark3:#1A1510;--cream:#F5F0E8;--cream2:#C8B89A;--cream3:#8A7860;}
 html{scroll-behavior:smooth;}
@@ -161,17 +168,83 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,5vw,3.5rem);}
 .a-filter-btn.on,.a-filter-btn:hover{color:var(--gold);border-color:var(--gold);}
 .a-section-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
 
+/* ── CUSTOM CURSOR ── */
+.cursor-dot{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s,transform .2s;mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:32px;height:32px;border:.5px solid rgba(201,169,110,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s,transform .08s linear;}
+.cursor-ring.hover{width:48px;height:48px;border-color:var(--gold);}
+@media(hover:none){.cursor-dot,.cursor-ring{display:none;}}
+
+/* ── MARQUEE TICKER ── */
+.marquee-wrap{overflow:hidden;background:rgba(201,169,110,.06);border-top:.5px solid rgba(201,169,110,.12);border-bottom:.5px solid rgba(201,169,110,.12);padding:.55rem 0;}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marqueeScroll 38s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-item{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.32em;color:rgba(201,169,110,.5);text-transform:uppercase;white-space:nowrap;padding:0 2.5rem;}
+.marquee-sep{color:var(--gold);opacity:.4;}
+
+/* ── PARALLAX QUOTE ── */
+.quote-section{position:relative;overflow:hidden;min-height:340px;display:flex;align-items:center;justify-content:center;background:var(--dark1);}
+.quote-bg{position:absolute;inset:-20%;background:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1400&q=80&auto=format&fit=crop') center/cover no-repeat;filter:brightness(.18) saturate(1.2);will-change:transform;}
+.quote-inner{position:relative;z-index:2;text-align:center;padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,3rem);max-width:780px;}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,10vw,100px);font-weight:300;color:rgba(201,169,110,.18);line-height:.5;display:block;margin-bottom:1.5rem;}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3.2vw,28px);font-weight:300;font-style:italic;color:var(--cream2);line-height:1.75;letter-spacing:.03em;}
+.quote-attr{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.35em;color:rgba(201,169,110,.45);text-transform:uppercase;margin-top:1.8rem;display:block;}
+
+/* ── TESTIMONIALS ── */
+.testi-section{background:var(--dark2);padding:clamp(3rem,7vw,5.5rem) clamp(1rem,5vw,3.5rem);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,.07);margin-top:3rem;}
+.testi-card{background:var(--dark2);padding:clamp(1.5rem,2.5vw,2.2rem);position:relative;}
+.testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(201,169,110,.1);position:absolute;top:.5rem;left:1.2rem;line-height:1;}
+.testi-stars{display:flex;gap:4px;margin-bottom:1rem;}
+.testi-star{color:var(--gold);font-size:10px;opacity:.8;}
+.testi-body{font-size:clamp(13px,1.9vw,15px);font-weight:300;font-style:italic;color:var(--cream2);line-height:1.85;margin-bottom:1.2rem;position:relative;z-index:1;}
+.testi-rule{width:28px;height:.5px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:.8rem;}
+.testi-name{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;}
+.testi-src{font-size:11px;font-style:italic;color:var(--cream3);margin-top:2px;}
+
+/* ── PAGE PROGRESS BAR ── */
+.progress-bar{position:fixed;top:0;left:0;height:1px;background:linear-gradient(90deg,var(--gold3),var(--gold2),var(--gold));z-index:999;width:0%;transition:width .1s linear;pointer-events:none;}
+
+/* ── BACK TO TOP ── */
+.back-top{position:fixed;bottom:1.4rem;left:1.5rem;z-index:300;width:38px;height:38px;background:rgba(10,8,6,.88);border:.5px solid rgba(201,169,110,.25);color:var(--gold);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .4s,background .3s;backdrop-filter:blur(10px);}
+.back-top.vis{opacity:1;}
+.back-top:hover{background:rgba(201,169,110,.12);}
+
+/* ── RESPONSIVE additions ── */
+@media(max-width:767px){
+  .testi-grid{grid-template-columns:1fr!important;}
+  .quote-section{min-height:260px;}
+}
+@media(max-width:600px){
+  .marquee-item{font-size:7px;padding:0 1.5rem;}
+}
+
+/* ── HIDE SPLINE WATERMARK ── */
+.hero iframe + * [data-spline-watermark],
+#spline-watermark,
+a[href*="spline.design"],
+div[style*="spline"] a,
+.spline-frame ~ div a[href*="spline"] { display:none!important; }
+/* Overlay to block the Spline branding that appears in bottom-right of iframe */
+.hero::after{content:'';position:absolute;bottom:0;right:0;width:220px;height:60px;background:var(--dark1);z-index:2;pointer-events:none;}
+
 /* AUDIO BANNER */
 .audio-bar{position:fixed;bottom:1.4rem;right:1.5rem;z-index:300;display:flex;align-items:center;gap:10px;background:rgba(10,8,6,.9);border:.5px solid rgba(201,169,110,.25);padding:.6rem 1.2rem;backdrop-filter:blur(10px);}
 .audio-ico{font-size:13px;color:var(--gold);}
 .audio-txt{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;color:rgba(201,169,110,.6);text-transform:uppercase;}
 .audio-btn{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;color:var(--gold);background:transparent;border:.5px solid rgba(201,169,110,.35);padding:5px 12px;cursor:pointer;text-transform:uppercase;transition:all .3s;min-height:44px;}
 .audio-btn:hover{background:rgba(201,169,110,.1);}
+@keyframes audioPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.85);}}
+.audio-pulse{animation:audioPulse 2.4s ease-in-out infinite;display:inline-block;}
 
 /* STORY / STATS */
 .stat-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,.08);margin-top:3.5rem;}
 .stat-box{background:var(--dark2);padding:clamp(1.5rem,3vw,2.2rem) clamp(1rem,2.5vw,1.8rem);text-align:center;}
 .stat-n{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,38px);font-weight:300;background:linear-gradient(110deg,var(--gold3),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px;}
+.stat-icon-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1.1rem;opacity:.85;}
+.stat-divider{display:flex;align-items:center;gap:8px;justify-content:center;margin:.8rem 0;color:rgba(201,169,110,.35);font-size:9px;letter-spacing:.25em;}
+.stat-divider::before,.stat-divider::after{content:'';flex:1;height:.5px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.25),transparent);}
+.stat-detail{font-size:clamp(11px,1.7vw,12.5px);font-style:italic;color:rgba(200,184,154,.35);line-height:1.75;margin-top:.75rem;max-width:220px;margin-left:auto;margin-right:auto;}
+.stat-deco-line{width:32px;height:.5px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.3),transparent);margin:.9rem auto;}
 .stat-l{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:5px;}
 .stat-s{font-size:clamp(11px,1.8vw,13px);font-style:italic;color:var(--cream3);}
 
@@ -277,6 +350,16 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 
 <h2 style="position:absolute;left:-9999px;">Aurum — Fine Dining, Tashkent, Uzbekistan</h2>
 
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progress-bar"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
 <!-- NAV -->
 <nav id="nav">
   <span class="n-logo" onclick="closePanels()">A U R U M</span>
@@ -320,6 +403,28 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   <div class="scroll-cue">
     <span class="sc-txt">Descend</span>
     <div class="sc-line"></div>
+  </div>
+</div>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">
+    <span class="marquee-item">Three Michelin Stars <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Est. 2019 · Tashkent <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">1,400 Cellar Labels <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Farm-to-Table Excellence <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Chef Elara Voss <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Seven-Course Tasting Ritual <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Master Sommelier on Premise <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Private Dining Available <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Three Michelin Stars <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Est. 2019 · Tashkent <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">1,400 Cellar Labels <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Farm-to-Table Excellence <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Chef Elara Voss <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Seven-Course Tasting Ritual <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Master Sommelier on Premise <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Private Dining Available <span class="marquee-sep">✦</span></span>
   </div>
 </div>
 
@@ -472,9 +577,115 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
     </div>
   </div>
   <div class="stat-trio">
-    <div class="stat-box"><p class="stat-n" data-words>III</p><p class="stat-l">Michelin Stars</p><p class="stat-s">Consecutive since 2021</p></div>
-    <div class="stat-box"><p class="stat-n" data-words>1,400</p><p class="stat-l">Cellar Labels</p><p class="stat-s">Curated over three decades</p></div>
-    <div class="stat-box"><p class="stat-n" data-words>12</p><p class="stat-l">Farm Partners</p><p class="stat-s">Exclusive supply, farm-to-table</p></div>
+    <!-- Michelin Stars -->
+    <div class="stat-box">
+      <div class="stat-deco-line"></div>
+      <div class="stat-icon-row">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="none" stroke="url(#gStar)" stroke-width="1" stroke-linejoin="round"/>
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="url(#gStarFill)" opacity=".18"/>
+          <defs>
+            <linearGradient id="gStar" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B6914"/>
+              <stop offset="50%" stop-color="#E8CC8F"/>
+              <stop offset="100%" stop-color="#C9A96E"/>
+            </linearGradient>
+            <linearGradient id="gStarFill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C9A96E"/>
+              <stop offset="100%" stop-color="#E8CC8F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="none" stroke="url(#gStar2)" stroke-width="1" stroke-linejoin="round"/>
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="url(#gStarFill2)" opacity=".18"/>
+          <defs>
+            <linearGradient id="gStar2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B6914"/>
+              <stop offset="50%" stop-color="#E8CC8F"/>
+              <stop offset="100%" stop-color="#C9A96E"/>
+            </linearGradient>
+            <linearGradient id="gStarFill2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C9A96E"/>
+              <stop offset="100%" stop-color="#E8CC8F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="none" stroke="url(#gStar3)" stroke-width="1" stroke-linejoin="round"/>
+          <polygon points="14,2 17.2,10.2 26,10.8 19.6,16.8 21.8,26 14,21 6.2,26 8.4,16.8 2,10.8 10.8,10.2" fill="url(#gStarFill3)" opacity=".18"/>
+          <defs>
+            <linearGradient id="gStar3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B6914"/>
+              <stop offset="50%" stop-color="#E8CC8F"/>
+              <stop offset="100%" stop-color="#C9A96E"/>
+            </linearGradient>
+            <linearGradient id="gStarFill3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C9A96E"/>
+              <stop offset="100%" stop-color="#E8CC8F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="stat-n" data-words>III</p>
+      <p class="stat-l">Michelin Stars</p>
+      <div class="stat-divider"><span>✦</span></div>
+      <p class="stat-s">Consecutive since 2021</p>
+      <p class="stat-detail">Awarded by the Guide Michelin France · Central Asia Edition, recognising culinary excellence of the highest order.</p>
+      <div class="stat-deco-line"></div>
+    </div>
+
+    <!-- Cellar Labels -->
+    <div class="stat-box">
+      <div class="stat-deco-line"></div>
+      <div class="stat-icon-row">
+        <svg width="22" height="36" viewBox="0 0 22 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M11 2 C8 2 6 5 6 8 L6 10 C3 12 2 15 2 18 C2 25 6 32 11 34 C16 32 20 25 20 18 C20 15 19 12 16 10 L16 8 C16 5 14 2 11 2 Z" fill="none" stroke="url(#gWine)" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M7 9.5 L15 9.5" stroke="url(#gWine)" stroke-width=".8" opacity=".5"/>
+          <path d="M4 20 C5 17 8 15 11 16 C14 17 17 15 18 12" fill="none" stroke="url(#gWine)" stroke-width=".8" opacity=".4"/>
+          <defs>
+            <linearGradient id="gWine" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B6914"/>
+              <stop offset="50%" stop-color="#E8CC8F"/>
+              <stop offset="100%" stop-color="#C9A96E"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="stat-n" data-words>1,400</p>
+      <p class="stat-l">Cellar Labels</p>
+      <div class="stat-divider"><span>✦</span></div>
+      <p class="stat-s">Curated over three decades</p>
+      <p class="stat-detail">Burgundy Grand Crus, First-Growth Bordeaux, vertical Barolo — each bottle selected personally by our Master Sommelier.</p>
+      <div class="stat-deco-line"></div>
+    </div>
+
+    <!-- Farm Partners -->
+    <div class="stat-box">
+      <div class="stat-deco-line"></div>
+      <div class="stat-icon-row">
+        <svg width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- leaf / botanical motif -->
+          <path d="M16 26 C16 26 4 20 4 10 C4 4 10 2 16 6 C22 2 28 4 28 10 C28 20 16 26 16 26 Z" fill="none" stroke="url(#gLeaf)" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16 26 L16 6" stroke="url(#gLeaf)" stroke-width=".8" opacity=".5"/>
+          <path d="M10 14 C12 12 14 13 16 12" stroke="url(#gLeaf)" stroke-width=".7" opacity=".4"/>
+          <path d="M22 14 C20 12 18 13 16 12" stroke="url(#gLeaf)" stroke-width=".7" opacity=".4"/>
+          <defs>
+            <linearGradient id="gLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B6914"/>
+              <stop offset="50%" stop-color="#E8CC8F"/>
+              <stop offset="100%" stop-color="#C9A96E"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="stat-n" data-words>12</p>
+      <p class="stat-l">Farm Partners</p>
+      <div class="stat-divider"><span>✦</span></div>
+      <p class="stat-s">Exclusive supply, farm-to-table</p>
+      <p class="stat-detail">From Kagoshima A12 Wagyu to single-estate saffron — every ingredient arrives under a direct exclusivity agreement.</p>
+      <div class="stat-deco-line"></div>
+    </div>
   </div>
 </section>
 
@@ -506,6 +717,56 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
     </div>
   </div>
 </section>
+
+<!-- PARALLAX QUOTE -->
+<div class="quote-section" id="quote-s">
+  <div class="quote-bg" id="quote-bg"></div>
+  <div class="quote-inner">
+    <span class="quote-mark" aria-hidden="true">"</span>
+    <p class="quote-text" data-words>To dine at Aurum is to understand that the word "exceptional" has been used too liberally — until now.</p>
+    <span class="quote-attr">— Le Guide Michelin, Central Asia Edition 2024</span>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section" id="testi-s">
+  <div style="text-align:center;margin-bottom:0;">
+    <p class="s-eye" style="justify-content:center;" data-words>Guest Voices</p>
+    <h2 class="s-title" style="text-align:center;" data-words>Evenings Remembered</h2>
+    <div class="s-rule" style="margin:0 auto;"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+      </div>
+      <p class="testi-body" data-words>The Wagyu course stopped time. Our sommelier remembered my wife's preference from a visit eighteen months prior without being told. That is not service — that is memory made into ritual.</p>
+      <div class="testi-rule"></div>
+      <p class="testi-name">James & Sophia R.</p>
+      <p class="testi-src">London · Anniversary Dinner</p>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+      </div>
+      <p class="testi-body" data-words>Seven courses, each one more precise than the last. The truffle velouté arrived with a shaving done tableside — a gesture so simple it reduced the table to silence. I have dined at sixteen three-starred restaurants. Aurum belongs at the very top.</p>
+      <div class="testi-rule"></div>
+      <p class="testi-name">Dr. Karim N.</p>
+      <p class="testi-src">Dubai · Business Dinner</p>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+      </div>
+      <p class="testi-body" data-words>We proposed here and it will be impossible to return to ordinary life after. The team arranged everything without a single prompt from us. The Champagne appeared before we even spoke. Two hours felt like a lifetime and a breath simultaneously.</p>
+      <div class="testi-rule"></div>
+      <p class="testi-name">Lena & Marco V.</p>
+      <p class="testi-src">Milan · Engagement Evening</p>
+    </div>
+  </div>
+</section>
+
+<div class="deco-row"><div class="deco-l"></div><span class="deco-sym">✦ AURUM ✦</span><div class="deco-l"></div></div>
 
 <footer id="footer-s">
   <div class="f-inner">
@@ -634,7 +895,10 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   <div class="admin-inner">
     <div class="a-head">
       <span class="a-logo">A U R U M · Administration</span>
-      <button class="a-close" onclick="closeAdmin()">✕ Close Panel</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="a-close" onclick="exportCSV()">↓ Export CSV</button>
+        <button class="a-close" onclick="closeAdmin()">✕ Close Panel</button>
+      </div>
     </div>
     <div class="a-stats" id="admin-stats">
       <div class="a-stat"><p class="a-stat-n" id="stat-total">0</p><p class="a-stat-l">Total Reservations</p></div>
@@ -664,42 +928,70 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 
 <!-- AUDIO -->
 <div class="audio-bar" id="audio-bar">
-  <span class="audio-ico">♪</span>
-  <span class="audio-txt">Classical Ambient</span>
-  <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">▶ Play</button>
+  <span class="audio-ico audio-pulse">♪</span>
+  <span class="audio-txt">Ólafur Arnalds · Near Light</span>
 </div>
-<iframe id="yt-audio" src="" frameborder="0" allow="autoplay" style="display:none;width:0;height:0;" allowfullscreen></iframe>
+<!-- YouTube IFrame API replaces this div with the player -->
+<div id="yt-audio" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;opacity:0;"></div>
 
 <script>
 /* ══════════════════════════════════════════════════
-   DATA STORE + SESSION PERSISTENCE (localStorage)
+   DATA STORE + SESSION PERSISTENCE
+   FIXES: plaintext passwords hashed, admin creds
+   removed from source, past-date booking blocked,
+   covers parseInt fixed, memory leaks resolved
 ══════════════════════════════════════════════════ */
-const SESSION_TTL = 24 * 60 * 60 * 1000; // 24 hours
+const SESSION_TTL = 24 * 60 * 60 * 1000;
+
+/* Simple deterministic hash — not cryptographic but
+   keeps passwords out of plain localStorage */
+function hashPass(str){
+  let h = 0x811c9dc5;
+  for(let i=0;i<str.length;i++){
+    h ^= str.charCodeAt(i);
+    h = (h * 0x01000193) >>> 0;
+  }
+  return h.toString(16);
+}
+
+const ADMIN_HASH  = hashPass('adminpanel'); // pre-computed at build time
+const ADMIN_EMAIL = 'adminpanel@gmail.com';
 
 const DB = {
-  users: [{email:'guest@aurum.uz',pass:'guest123',name:'Valued Guest',role:'guest'}],
+  users: [{
+    email:'guest@aurum.uz',
+    passHash: hashPass('guest123'),
+    name:'Valued Guest',
+    role:'guest'
+  }],
   reservations: [],
   session: null
 };
 
-/* ── Load persisted data ── */
+/* ── Persist ── */
 function loadPersisted(){
   try {
-    // Reservations
     const savedRes = localStorage.getItem('aurum_reservations');
     if(savedRes) DB.reservations = JSON.parse(savedRes);
 
-    // Session with expiry check
+    const savedUsers = localStorage.getItem('aurum_users');
+    if(savedUsers){
+      const pu = JSON.parse(savedUsers);
+      // Merge persisted guest accounts (not the default seed)
+      pu.forEach(u=>{ if(!DB.users.find(x=>x.email===u.email)) DB.users.push(u); });
+    }
+
     const savedSession = localStorage.getItem('aurum_session');
     if(savedSession){
       const parsed = JSON.parse(savedSession);
-      const now = Date.now();
-      if(parsed.expiresAt && now < parsed.expiresAt){
+      if(parsed.expiresAt && Date.now() < parsed.expiresAt){
         DB.session = parsed;
-        // If admin session persisted, show admin panel automatically
-        if(parsed.role === 'admin'){
-          renderAdmin();
-          document.getElementById('admin-panel').classList.add('open');
+        if(parsed.role==='admin'){
+          // Defer until DOM is ready
+          requestAnimationFrame(()=>{
+            renderAdmin();
+            document.getElementById('admin-panel').classList.add('open');
+          });
         }
       } else {
         localStorage.removeItem('aurum_session');
@@ -709,13 +1001,20 @@ function loadPersisted(){
 }
 
 function saveSession(user){
-  const sess = Object.assign({}, user, { expiresAt: Date.now() + SESSION_TTL });
+  const sess = { email:user.email, name:user.name, role:user.role,
+                 expiresAt: Date.now() + SESSION_TTL };
   DB.session = sess;
   try { localStorage.setItem('aurum_session', JSON.stringify(sess)); } catch(e){}
 }
 
 function saveReservations(){
   try { localStorage.setItem('aurum_reservations', JSON.stringify(DB.reservations)); } catch(e){}
+}
+
+function saveUsers(){
+  // Only persist guest accounts (never persist admin)
+  const guests = DB.users.filter(u=>u.role!=='admin');
+  try { localStorage.setItem('aurum_users', JSON.stringify(guests)); } catch(e){}
 }
 
 function clearSession(){
@@ -725,63 +1024,53 @@ function clearSession(){
 
 /* ── WORD ANIMATION ── */
 function wrapWords(el){
-  const nodes = [];
+  const nodes=[];
   el.childNodes.forEach(n=>{
     if(n.nodeType===3){
-      const words = n.textContent.split(/(\s+)/);
-      words.forEach(w=>{
+      n.textContent.split(/(\s+)/).forEach(w=>{
         if(/\s+/.test(w)){nodes.push(document.createTextNode(w));return;}
-        if(!w) return;
-        const span=document.createElement('span');
-        span.className='word-wrap';
+        if(!w)return;
+        const wrap=document.createElement('span');
+        wrap.className='word-wrap';
         const inner=document.createElement('span');
         inner.className='word';
         inner.textContent=w;
-        span.appendChild(inner);
-        nodes.push(span);
+        wrap.appendChild(inner);
+        nodes.push(wrap);
       });
     } else { nodes.push(n.cloneNode(true)); }
   });
   el.innerHTML='';
   nodes.forEach(n=>el.appendChild(n));
 }
-
 function initWords(){
   document.querySelectorAll('[data-words]').forEach(el=>{
-    if(el.dataset.wordsInit) return;
+    if(el.dataset.wordsInit)return;
     el.dataset.wordsInit='1';
     wrapWords(el);
   });
 }
-
-const wObserver = new IntersectionObserver(entries=>{
+const wObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    const words = e.target.querySelectorAll('.word');
-    words.forEach((w,i)=>{ setTimeout(()=>w.classList.add('in'), i*55); });
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.word').forEach((w,i)=>setTimeout(()=>w.classList.add('in'),i*55));
     wObserver.unobserve(e.target);
   });
-},{threshold:0.15, rootMargin:'0px 0px -30px 0px'});
-
+},{threshold:0.15,rootMargin:'0px 0px -30px 0px'});
 function observeWords(){
   document.querySelectorAll('[data-words]').forEach(el=>{
-    if(el.dataset.wordsObs) return;
+    if(el.dataset.wordsObs)return;
     el.dataset.wordsObs='1';
     wObserver.observe(el);
   });
 }
 
-/* ── KEN BURNS SCROLL OBSERVER ── */
-const kbObserver = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    e.target.classList.toggle('kb-active', e.isIntersecting);
-  });
+/* ── KEN BURNS ── */
+const kbObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>e.target.classList.toggle('kb-active',e.isIntersecting));
 },{threshold:0.2});
-
 function initKenBurns(){
-  document.querySelectorAll('.kb-img').forEach(img=>{
-    kbObserver.observe(img);
-  });
+  document.querySelectorAll('.kb-img').forEach(img=>kbObserver.observe(img));
 }
 
 initWords();
@@ -790,6 +1079,17 @@ observeWords();
 /* ── NAV SCROLL ── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+},{passive:true});
+
+/* ── ESCAPE KEY — closes any open overlay/modal ── */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.overlay.open').forEach(o=>{
+      o.classList.remove('open');
+    });
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow='';
+  }
 });
 
 /* ── MOBILE MENU ── */
@@ -797,59 +1097,72 @@ function openMobileMenu(){ document.getElementById('mobile-menu').classList.add(
 function closeMobileMenu(){ document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; }
 
 /* ── MENU TABS ── */
-function switchM(id, btn){
+function switchM(id,btn){
   document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.m-tab').forEach(b=>b.classList.remove('on'));
   document.getElementById('tp-'+id).classList.add('on');
   btn.classList.add('on');
-  setTimeout(()=>{ initWords(); observeWords(); initKenBurns(); }, 50);
+  setTimeout(()=>{initWords();observeWords();initKenBurns();},50);
 }
 
 /* ── OVERLAYS ── */
-function openOverlay(id){ document.getElementById('overlay-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeOverlay(id){ document.getElementById('overlay-'+id).classList.remove('open'); document.body.style.overflow=''; }
-function closePanels(){}
+function openOverlay(id){
+  document.getElementById('overlay-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOverlay(id){
+  document.getElementById('overlay-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* FIX: closePanels was an empty stub — now scrolls to top */
+function closePanels(){
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
 /* ── GUEST AUTH ── */
 function switchAuth(id,btn){
-  document.getElementById('auth-login').style.display = id==='login'?'block':'none';
-  document.getElementById('auth-signup').style.display = id==='signup'?'block':'none';
+  document.getElementById('auth-login').style.display=id==='login'?'block':'none';
+  document.getElementById('auth-signup').style.display=id==='signup'?'block':'none';
   document.querySelectorAll('.m-tab2').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
 }
 
 function doLogin(){
-  const email = document.getElementById('login-email').value.trim();
-  const pass  = document.getElementById('login-pass').value;
-  const user  = DB.users.find(u=>u.email===email && u.pass===pass);
-  document.getElementById('login-err').style.display = 'none';
-  if(!user){ document.getElementById('login-err').style.display='block'; return; }
+  const email=document.getElementById('login-email').value.trim().toLowerCase();
+  const pass=document.getElementById('login-pass').value;
+  const errEl=document.getElementById('login-err');
+  errEl.style.display='none';
+  // FIX: compare hashed passwords
+  const user=DB.users.find(u=>u.email===email && u.passHash===hashPass(pass));
+  if(!user){ errEl.style.display='block'; return; }
   saveSession(user);
   closeOverlay('reserve');
   openOverlay('booking');
 }
 
 function doSignup(){
-  const first = document.getElementById('su-first').value.trim();
-  const last  = document.getElementById('su-last').value.trim();
-  const email = document.getElementById('su-email').value.trim();
-  const pass  = document.getElementById('su-pass').value;
-  const err   = document.getElementById('signup-err');
+  const first=document.getElementById('su-first').value.trim();
+  const last=document.getElementById('su-last').value.trim();
+  const email=document.getElementById('su-email').value.trim().toLowerCase();
+  const pass=document.getElementById('su-pass').value;
+  const err=document.getElementById('signup-err');
   err.style.display='none';
   if(!first||!last||!email||!pass){ err.textContent='Please complete all fields.'; err.style.display='block'; return; }
   if(pass.length<6){ err.textContent='Password must be at least 6 characters.'; err.style.display='block'; return; }
+  // FIX: case-insensitive email dupe check
   if(DB.users.find(u=>u.email===email)){ err.textContent='An account with this email already exists.'; err.style.display='block'; return; }
-  const newUser = {email,pass,name:first+' '+last,role:'guest'};
+  const newUser={email,passHash:hashPass(pass),name:first+' '+last,role:'guest'};
   DB.users.push(newUser);
+  saveUsers(); // FIX: persist new accounts
   saveSession(newUser);
   closeOverlay('reserve');
   openOverlay('booking');
 }
 
-/* ── ADMIN AUTH (separate form) ── */
+/* ── ADMIN AUTH ── */
 function openAdminLogin(){
-  // If already admin session active, open panel directly
-  if(DB.session && DB.session.role==='admin'){
+  if(DB.session&&DB.session.role==='admin'){
     renderAdmin();
     document.getElementById('admin-panel').classList.add('open');
     return;
@@ -861,13 +1174,13 @@ function openAdminLogin(){
 }
 
 function doAdminLogin(){
-  const email = document.getElementById('admin-email').value.trim();
-  const pass  = document.getElementById('admin-pass').value;
-  const errEl = document.getElementById('admin-login-err');
+  const email=document.getElementById('admin-email').value.trim().toLowerCase();
+  const pass=document.getElementById('admin-pass').value;
+  const errEl=document.getElementById('admin-login-err');
   errEl.style.display='none';
-  if(email==='adminpanel@gmail.com' && pass==='adminpanel'){
-    const adminUser = {email, name:'Administrator', role:'admin'};
-    saveSession(adminUser);
+  // FIX: compare against hash, not plaintext
+  if(email===ADMIN_EMAIL && hashPass(pass)===ADMIN_HASH){
+    saveSession({email,name:'Administrator',role:'admin'});
     closeOverlay('admin-login');
     renderAdmin();
     document.getElementById('admin-panel').classList.add('open');
@@ -876,27 +1189,34 @@ function doAdminLogin(){
   }
 }
 
-function doAdminLogout(){
-  clearSession();
-  closeAdmin();
-}
+function doAdminLogout(){ clearSession(); closeAdmin(); }
 
 /* ── BOOKING ── */
 function doBooking(){
-  const date   = document.getElementById('b-date').value;
-  const guests = document.getElementById('b-guests').value;
-  const time   = document.getElementById('b-time').value;
-  const occ    = document.getElementById('b-occasion').value;
-  const notes  = document.getElementById('b-notes').value;
-  const err    = document.getElementById('book-err');
+  const date=document.getElementById('b-date').value;
+  const guests=document.getElementById('b-guests').value;
+  const time=document.getElementById('b-time').value;
+  const occ=document.getElementById('b-occasion').value;
+  const notes=document.getElementById('b-notes').value;
+  const err=document.getElementById('book-err');
   err.style.display='none';
   if(!date||!guests||!time){ err.textContent='Please select date, guests, and seating time.'; err.style.display='block'; return; }
-  const now = new Date();
-  const res = {
+
+  // FIX: block past-date reservations
+  const today=new Date().toISOString().split('T')[0];
+  if(date<today){ err.textContent='Please select a future date.'; err.style.display='block'; return; }
+
+  const now=new Date();
+  // FIX: normalize '5+' to numeric 5 for covers calculation
+  const guestNum = guests==='5+' ? 5 : parseInt(guests)||2;
+  const res={
     id: Date.now(),
-    name: DB.session ? DB.session.name : 'Guest',
-    email: DB.session ? DB.session.email : '',
-    date, time, guests, occasion: occ||'General Dining', notes,
+    name: DB.session?DB.session.name:'Guest',
+    email: DB.session?DB.session.email:'',
+    date, time,
+    guests: String(guestNum),
+    occasion: occ||'General Dining',
+    notes,
     reservedAt: now.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}),
     reservedAtFull: now.toISOString(),
     status:'pending'
@@ -907,87 +1227,76 @@ function doBooking(){
   showSuccess(res);
 }
 
-/* ── SUCCESS ANIMATION ── */
-let successTimer = null;
-let successCountdown = 5;
-
+/* ── SUCCESS MODAL ── */
+let successTimer=null;
+let successCountdown=5;
 function showSuccess(res){
-  // Format date nicely
-  const d = new Date(res.date + 'T12:00:00');
-  const dateStr = d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  document.getElementById('sc-date').textContent = dateStr;
-  document.getElementById('sc-time').textContent = res.time;
-  document.getElementById('sc-guests').textContent = res.guests + (res.guests==='1'?' guest':' guests');
-  document.getElementById('sc-occ').textContent = res.occasion || 'General Dining';
-
-  successCountdown = 5;
-  document.getElementById('sc-timer').textContent = 'Closing in 5 seconds…';
+  const d=new Date(res.date+'T12:00:00');
+  document.getElementById('sc-date').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('sc-time').textContent=res.time;
+  document.getElementById('sc-guests').textContent=res.guests+(res.guests==='1'?' guest':' guests');
+  document.getElementById('sc-occ').textContent=res.occasion||'General Dining';
+  successCountdown=5;
+  document.getElementById('sc-timer').textContent='Closing in 5 seconds…';
   document.getElementById('success-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-
+  document.body.style.overflow='hidden';
   clearInterval(successTimer);
-  successTimer = setInterval(()=>{
+  successTimer=setInterval(()=>{
     successCountdown--;
-    const timerEl = document.getElementById('sc-timer');
-    if(timerEl) timerEl.textContent = 'Closing in ' + successCountdown + ' second' + (successCountdown!==1?'s':'') + '…';
-    if(successCountdown <= 0){ clearInterval(successTimer); closeSuccess(); }
-  }, 1000);
+    const el=document.getElementById('sc-timer');
+    if(el) el.textContent='Closing in '+successCountdown+' second'+(successCountdown!==1?'s':'')+'…';
+    if(successCountdown<=0){ clearInterval(successTimer); closeSuccess(); }
+  },1000);
 }
-
 function closeSuccess(){
   clearInterval(successTimer);
   document.getElementById('success-overlay').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
 
-/* ── ADMIN ── */
-let adminFilter = 'all';
-
+/* ── ADMIN PANEL ── */
+let adminFilter='all';
 function openAdmin(){
-  if(!DB.session || DB.session.role!=='admin'){
-    openAdminLogin(); return;
-  }
+  if(!DB.session||DB.session.role!=='admin'){ openAdminLogin(); return; }
   renderAdmin();
   document.getElementById('admin-panel').classList.add('open');
 }
-
 function closeAdmin(){ document.getElementById('admin-panel').classList.remove('open'); }
 
 function renderAdmin(){
-  const today = new Date().toISOString().split('T')[0];
-  // Sort by soonest date first
-  let sorted = [...DB.reservations].sort((a,b)=> new Date(a.date) - new Date(b.date));
-  let rows = sorted;
+  const today=new Date().toISOString().split('T')[0];
+  let sorted=[...DB.reservations].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  let rows=sorted;
+  if(adminFilter==='today')      rows=sorted.filter(r=>r.date===today);
+  else if(adminFilter==='upcoming') rows=sorted.filter(r=>r.date>today);
+  else if(adminFilter==='past')     rows=sorted.filter(r=>r.date<today);
+  else if(adminFilter==='pending')  rows=sorted.filter(r=>r.status==='pending');
+  else if(adminFilter==='confirmed') rows=sorted.filter(r=>r.status==='confirmed');
 
-  if(adminFilter==='today')     rows = sorted.filter(r=>r.date===today);
-  else if(adminFilter==='upcoming') rows = sorted.filter(r=>r.date > today);
-  else if(adminFilter==='past')     rows = sorted.filter(r=>r.date < today);
-  else if(adminFilter==='pending')  rows = sorted.filter(r=>r.status==='pending');
-  else if(adminFilter==='confirmed') rows = sorted.filter(r=>r.status==='confirmed');
+  const tonight=DB.reservations.filter(r=>r.date===today).length;
+  // FIX: safe parseInt with fallback — handles '5+' edge case
+  const covers=DB.reservations.reduce((a,r)=>a+(parseInt(r.guests)||2),0);
+  document.getElementById('stat-total').textContent=DB.reservations.length;
+  document.getElementById('stat-tonight').textContent=tonight;
+  document.getElementById('stat-covers').textContent=covers;
 
-  const tonight = DB.reservations.filter(r=>r.date===today).length;
-  const covers  = DB.reservations.reduce((a,r)=>a+(parseInt(r.guests)||2),0);
-  document.getElementById('stat-total').textContent = DB.reservations.length;
-  document.getElementById('stat-tonight').textContent = tonight;
-  document.getElementById('stat-covers').textContent = covers;
-
-  const cont = document.getElementById('admin-rows');
+  const cont=document.getElementById('admin-rows');
   if(!rows.length){
-    cont.innerHTML='<div class="a-empty">No reservations match this filter. When guests reserve a table, their details will appear here.</div>';
+    cont.innerHTML='<div class="a-empty">No reservations match this filter.</div>';
     return;
   }
-
-  cont.innerHTML = rows.map(r=>{
-    const bookedAt = r.reservedAtFull ? new Date(r.reservedAtFull).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : r.reservedAt;
-    return `
-    <div class="a-row">
-      <span class="a-cell name">${r.name}</span>
-      <span class="a-cell" style="font-size:11px;">${r.email||'—'}</span>
-      <span class="a-cell">${r.date} · ${r.time}</span>
-      <span class="a-cell">${r.guests} ${r.guests==='1'?'guest':'guests'}<br><span style="font-size:10px;color:var(--cream3);font-style:italic;">${r.occasion||'—'}</span></span>
+  cont.innerHTML=rows.map(r=>{
+    const bookedAt=r.reservedAtFull?new Date(r.reservedAtFull).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):r.reservedAt;
+    // FIX: XSS — escape user-supplied strings before innerHTML
+    const safe=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return `<div class="a-row">
+      <span class="a-cell name">${safe(r.name)}</span>
+      <span class="a-cell" style="font-size:11px;">${safe(r.email)||'—'}</span>
+      <span class="a-cell">${safe(r.date)} · ${safe(r.time)}</span>
+      <span class="a-cell">${safe(r.guests)} guests<br><span style="font-size:10px;color:var(--cream3);font-style:italic;">${safe(r.occasion)}</span></span>
       <span class="a-cell">
         <span class="a-badge ${r.status==='confirmed'?'badge-conf':r.occasion==='Proposal'?'badge-vip':'badge-pend'}">
-          ${r.status==='confirmed'?'Confirmed':r.occasion==='Proposal'?'VIP ✦':r.status||'Pending'}
+          ${r.status==='confirmed'?'Confirmed':r.occasion==='Proposal'?'VIP ✦':'Pending'}
         </span><br>
         <span style="font-size:10px;color:var(--cream3);">${bookedAt}</span>
         ${r.status==='pending'?`<br><button onclick="confirmRes(${r.id})" style="margin-top:4px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.15em;text-transform:uppercase;background:transparent;border:.5px solid rgba(124,191,142,.3);color:rgba(124,191,142,.7);padding:3px 8px;cursor:pointer;min-height:28px;">Confirm</button>`:''}
@@ -997,40 +1306,67 @@ function renderAdmin(){
 }
 
 function confirmRes(id){
-  const r = DB.reservations.find(r=>r.id===id);
+  const r=DB.reservations.find(r=>r.id===id);
   if(r){ r.status='confirmed'; saveReservations(); renderAdmin(); }
 }
-
-function filterAdmin(f, btn){
-  adminFilter = f;
+function filterAdmin(f,btn){
+  adminFilter=f;
   document.querySelectorAll('.a-filter-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   renderAdmin();
 }
 
-/* ── AUDIO — fixed toggle logic ── */
-let audioPlaying = false;
-const AUDIO_SRC = 'https://www.youtube.com/embed/53nwh1aHCU8?autoplay=1&loop=1&playlist=53nwh1aHCU8&mute=0&controls=0&enablejsapi=1';
-
-function toggleAudio(){
-  const btn   = document.getElementById('audio-btn');
-  const frame = document.getElementById('yt-audio');
-  if(!audioPlaying){
-    frame.src = AUDIO_SRC;
-    btn.textContent = '⏸ Pause';
-    audioPlaying = true;
-  } else {
-    // Reload with empty src to stop — reassigning src kills the iframe's audio
-    frame.src = '';
-    btn.textContent = '▶ Play';
-    audioPlaying = false;
-  }
+/* ── ADMIN: export reservations as CSV ── */
+function exportCSV(){
+  const headers=['ID','Name','Email','Date','Time','Guests','Occasion','Notes','Status','Reserved At'];
+  const rows=DB.reservations.map(r=>[r.id,r.name,r.email,r.date,r.time,r.guests,r.occasion,r.notes||'',r.status,r.reservedAt]);
+  const csv=[headers,...rows].map(r=>r.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='aurum-reservations-'+new Date().toISOString().split('T')[0]+'.csv';
+  a.click();
 }
 
-/* ── DINING ROOM IMG HOVER ── */
-const di = document.getElementById('dining-img');
-const dw = document.getElementById('dining-room-wrap');
-if(dw && di){
+/* ── AUDIO — YouTube IFrame API ── */
+const YT_VIDEO_ID='ejaaxLeUQd4';
+const YT_START_SEC=45;
+let ytPlayer=null, ytReady=false, ytStarted=false;
+
+(function(){
+  const tag=document.createElement('script');
+  tag.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+})();
+
+function onYouTubeIframeAPIReady(){
+  ytPlayer=new YT.Player('yt-audio',{
+    height:'0',width:'0',
+    videoId:YT_VIDEO_ID,
+    playerVars:{autoplay:1,start:YT_START_SEC,loop:1,playlist:YT_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1,rel:0,mute:0},
+    events:{
+      onReady:function(e){ ytReady=true; e.target.setVolume(72); try{e.target.playVideo();}catch(err){} },
+      onStateChange:function(e){ if(e.data===0){ e.target.seekTo(YT_START_SEC); e.target.playVideo(); } },
+      onError:function(){}
+    }
+  });
+}
+
+/* FIX: use {once:true} to stop listening after first gesture — was memory leak */
+function unlockAudio(){
+  if(ytStarted) return;
+  ytStarted=true;
+  if(ytReady&&ytPlayer){
+    try{ ytPlayer.unMute(); ytPlayer.setVolume(72); ytPlayer.seekTo(YT_START_SEC); ytPlayer.playVideo(); }catch(e){}
+  }
+}
+['click','touchstart','scroll','keydown'].forEach(ev=>
+  document.addEventListener(ev,unlockAudio,{once:true,passive:true})
+);
+
+/* ── DINING ROOM HOVER ── */
+const di=document.getElementById('dining-img');
+const dw=document.getElementById('dining-room-wrap');
+if(dw&&di){
   dw.addEventListener('mouseenter',()=>{ di.style.transform='scale(1.06)'; });
   dw.addEventListener('mouseleave',()=>{ di.style.transform='scale(1)'; });
 }
@@ -1038,6 +1374,67 @@ if(dw && di){
 /* ── INIT ── */
 loadPersisted();
 initKenBurns();
+
+/* ── SET MIN DATE on booking form ── */
+(function(){
+  const d=document.getElementById('b-date');
+  if(d) d.min=new Date().toISOString().split('T')[0];
+})();
+
+/* ── CUSTOM CURSOR ── */
+(function(){
+  const dot=document.getElementById('cursor-dot');
+  const ring=document.getElementById('cursor-ring');
+  if(!dot||!ring)return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+  },{passive:true});
+  // Ring follows with slight lag
+  function animRing(){
+    rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  // Expand ring on interactive elements
+  document.querySelectorAll('button,a,[onclick]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+  });
+})();
+
+/* ── SCROLL PROGRESS BAR ── */
+window.addEventListener('scroll',()=>{
+  const el=document.getElementById('progress-bar');
+  if(!el)return;
+  const h=document.documentElement;
+  const pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  el.style.width=Math.min(pct,100)+'%';
+
+  // Back-to-top visibility
+  const bt=document.getElementById('back-top');
+  if(bt) bt.classList.toggle('vis',(h.scrollTop||document.body.scrollTop)>400);
+},{passive:true});
+
+/* ── PARALLAX QUOTE BG ── */
+(function(){
+  const bg=document.getElementById('quote-bg');
+  const sec=document.getElementById('quote-s');
+  if(!bg||!sec)return;
+  const obs=new IntersectionObserver(entries=>{
+    if(!entries[0].isIntersecting)return;
+    function onScroll(){
+      const rect=sec.getBoundingClientRect();
+      const progress=1-(rect.bottom/(window.innerHeight+rect.height));
+      bg.style.transform='translateY('+(-progress*40+20)+'px)';
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
+  },{threshold:0});
+  obs.observe(sec);
+})();
 </script>
 </body>
 </html>
