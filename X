@@ -1,8 +1,0 @@
-index.html
-
-<!DOCTYPE html>
-<html>
-<body>
-    <h1>My Test Site works on iOS!</h1>
-</body>
-</html>
