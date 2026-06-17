@@ -427,7 +427,7 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- TOP CREDIT BANNER -->
-<div id="top-credit-bar">СОЗДАНО С ЛЮБОВЬЮ · KHODJIEV F</div>
+<div id="top-credit-bar">СДЕЛАНО KHODJIEVV F</div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1046,11 +1046,12 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 
 <!-- AUDIO -->
 <div class="audio-bar" id="audio-bar">
-  <span class="audio-ico audio-pulse">♪</span>
+  <span class="audio-ico audio-pulse" id="audio-ico">♪</span>
   <span class="audio-txt">Ólafur Arnalds · Near Light</span>
+  <button class="audio-btn" id="audio-toggle-btn" onclick="toggleAudio()">Пауза</button>
 </div>
 <!-- YouTube IFrame API replaces this div with the player -->
-<div id="yt-audio" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;opacity:0;"></div>
+<div id="yt-audio" style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
 
 <script>
 /* ══════════════════════════════════════════════════
@@ -1292,6 +1293,7 @@ function doLogin(){
   openOverlay('booking');
   setTimeout(initRating, 100);
   updateNavUI();
+}
 
 function doSignup(){
   const first=document.getElementById('su-first').value.trim();
@@ -1312,6 +1314,7 @@ function doSignup(){
   openOverlay('booking');
   setTimeout(initRating, 100);
   updateNavUI();
+}
 
 /* ── ADMIN AUTH ── */
 function openAdminLogin(){
@@ -1681,7 +1684,7 @@ function safe(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'
 /* ── AUDIO — YouTube IFrame API ── */
 const YT_VIDEO_ID='ejaaxLeUQd4';
 const YT_START_SEC=45;
-let ytPlayer=null, ytReady=false, ytStarted=false;
+let ytPlayer=null, ytReady=false, ytStarted=false, ytPaused=false;
 
 (function(){
   const tag=document.createElement('script');
@@ -1691,25 +1694,62 @@ let ytPlayer=null, ytReady=false, ytStarted=false;
 
 function onYouTubeIframeAPIReady(){
   ytPlayer=new YT.Player('yt-audio',{
-    height:'0',width:'0',
+    height:'1',width:'1',
     videoId:YT_VIDEO_ID,
-    playerVars:{autoplay:1,start:YT_START_SEC,loop:1,playlist:YT_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1,rel:0,mute:0},
+    playerVars:{autoplay:1,start:YT_START_SEC,loop:1,playlist:YT_VIDEO_ID,controls:0,disablekb:1,fs:0,modestbranding:1,rel:0,mute:1},
     events:{
-      onReady:function(e){ ytReady=true; e.target.setVolume(72); try{e.target.playVideo();}catch(err){} },
-      onStateChange:function(e){ if(e.data===0){ e.target.seekTo(YT_START_SEC); e.target.playVideo(); } },
+      onReady:function(e){
+        ytReady=true;
+        try{ e.target.setVolume(72); e.target.playVideo(); }catch(err){}
+      },
+      onStateChange:function(e){
+        if(e.data===0){ try{ e.target.seekTo(YT_START_SEC); e.target.playVideo(); }catch(err){} }
+      },
       onError:function(){}
     }
   });
 }
 
-/* FIX: use {once:true} to stop listening after first gesture — was memory leak */
 function unlockAudio(){
   if(ytStarted) return;
   ytStarted=true;
-  if(ytReady&&ytPlayer){
-    try{ ytPlayer.unMute(); ytPlayer.setVolume(72); ytPlayer.seekTo(YT_START_SEC); ytPlayer.playVideo(); }catch(e){}
+  function tryUnlock(){
+    if(ytReady&&ytPlayer){
+      try{
+        ytPlayer.unMute();
+        ytPlayer.setVolume(72);
+        ytPlayer.seekTo(YT_START_SEC);
+        ytPlayer.playVideo();
+        updateAudioBtn();
+      }catch(e){ setTimeout(tryUnlock,500); }
+    } else {
+      setTimeout(tryUnlock,500);
+    }
   }
+  tryUnlock();
 }
+
+function toggleAudio(){
+  if(!ytPlayer||!ytReady) return;
+  try{
+    if(ytPaused){
+      ytPlayer.unMute(); ytPlayer.setVolume(72); ytPlayer.playVideo();
+      ytPaused=false;
+    } else {
+      ytPlayer.pauseVideo();
+      ytPaused=true;
+    }
+    updateAudioBtn();
+  }catch(e){}
+}
+
+function updateAudioBtn(){
+  const btn=document.getElementById('audio-toggle-btn');
+  const ico=document.getElementById('audio-ico');
+  if(btn) btn.textContent=ytPaused?'Играть':'Пауза';
+  if(ico){ ico.classList.toggle('audio-pulse',!ytPaused); }
+}
+
 ['click','touchstart','scroll','keydown'].forEach(ev=>
   document.addEventListener(ev,unlockAudio,{once:true,passive:true})
 );
