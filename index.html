@@ -211,6 +211,10 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,5vw,3.5rem);}
 .rating-star.hovered .rstar-poly,.rating-star.selected .rstar-poly{fill:url(#rg1);stroke:url(#rg1);}
 .rating-star.locked{cursor:default;}
 .rating-star:not(.locked):hover{transform:scale(1.15);}
+.rating-textarea{width:100%;background:rgba(201,169,110,.04);border:.5px solid rgba(201,169,110,.22);color:var(--cream2);font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;line-height:1.7;padding:.9rem 1rem;resize:vertical;min-height:90px;outline:none;transition:border-color .3s;}
+.rating-textarea:focus{border-color:rgba(201,169,110,.5);}
+.rating-textarea::placeholder{color:rgba(200,184,154,.3);font-style:italic;}
+.rating-char-count{font-size:10px;color:rgba(201,169,110,.3);text-align:right;margin-top:3px;letter-spacing:.08em;}
 .rating-submit-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;background:transparent;border:.5px solid rgba(201,169,110,.4);color:var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;min-height:44px;animation:fadeInUp .4s ease both;}
 .rating-submit-btn:hover{background:rgba(201,169,110,.1);}
 .rating-locked-msg{font-size:12px;font-style:italic;color:rgba(200,184,154,.45);margin-top:.6rem;}
@@ -343,6 +347,7 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 .success-val{font-size:13px;font-style:italic;color:var(--cream2);}
 .success-close{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;background:transparent;border:.5px solid rgba(201,169,110,.35);color:var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;min-height:44px;}
 .success-close:hover{background:rgba(201,169,110,.1);}
+.success-email-note{font-size:clamp(11px,1.8vw,13px);font-style:italic;color:rgba(200,184,154,.5);line-height:1.7;margin-bottom:1rem;text-align:center;padding:0 .5rem;}
 .success-timer{font-size:11px;color:rgba(200,184,154,.3);margin-top:.8rem;font-style:italic;}
 
 /* ADMIN LOGIN MODAL */
@@ -399,6 +404,20 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   .btn-solid,.btn-outline{width:100%;max-width:280px;text-align:center;}
 }
 </style>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── EmailJS Configuration ──────────────────────────────────────────────
+  // Replace these placeholder values with your real EmailJS credentials:
+  // 1. Go to https://emailjs.com and create a free account
+  // 2. Add an Email Service (Gmail, Outlook, etc.) → get your Service ID
+  // 3. Create an Email Template → get your Template ID
+  // 4. Copy your Public Key from Account → API Keys
+  const EJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
+  const EJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
+  const EJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'AbCdEfGhIjKlMnOp'
+  emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+</script>
 
 <h2 style="position:absolute;left:-9999px;">Aurum — Fine Dining, Tashkent, Uzbekistan</h2>
 
@@ -446,17 +465,17 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   <iframe class="spline-frame" src="https://my.spline.design/3dpathslines1copy-aoSaLJFe5bMUP9aOWFVfLVHk/" frameborder="0" allowfullscreen></iframe>
   <div class="hero-veil"></div>
   <div class="hero-body">
-    <p class="h-tag">Est. 2019 · Tashkent, Uzbekistan · Three Michelin Stars</p>
+    <p class="h-tag">Осн. 2019 · Ташкент, Узбекистан · Три Звезды Мишлен</p>
     <h1 class="h-name">AURUM</h1>
     <div class="h-rule"></div>
-    <p class="h-sub">Where the rarest ingredients meet artistry forged over decades. An evening here is not a meal — it is a memory.</p>
+    <p class="h-sub">Здесь редчайшие ингредиенты встречают мастерство, отточенное десятилетиями. Вечер здесь — это не ужин, это воспоминание.</p>
     <div class="h-btns">
-      <button class="btn-solid" onclick="openOverlay('reserve')">Secure Your Table</button>
-      <button class="btn-outline" onclick="document.getElementById('menu-s').scrollIntoView({behavior:'smooth'})">Peruse the Menu</button>
+      <button class="btn-solid" onclick="openOverlay('reserve')">Забронировать Стол</button>
+      <button class="btn-outline" onclick="document.getElementById('menu-s').scrollIntoView({behavior:'smooth'})">Изучить Меню</button>
     </div>
   </div>
   <div class="scroll-cue">
-    <span class="sc-txt">Descend</span>
+    <span class="sc-txt">Вниз</span>
     <div class="sc-line"></div>
   </div>
 </div>
@@ -464,130 +483,130 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <!-- MARQUEE TICKER -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track" id="marquee-track">
-    <span class="marquee-item">Three Michelin Stars <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Est. 2019 · Tashkent <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">1,400 Cellar Labels <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Farm-to-Table Excellence <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Chef Elara Voss <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Seven-Course Tasting Ritual <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Master Sommelier on Premise <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Private Dining Available <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Three Michelin Stars <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Est. 2019 · Tashkent <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">1,400 Cellar Labels <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Farm-to-Table Excellence <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Chef Elara Voss <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Seven-Course Tasting Ritual <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Master Sommelier on Premise <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Private Dining Available <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Три Звезды Мишлен <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Осн. 2019 · Ташкент <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">1 400 Этикеток Погреба <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Кухня Прямо с Фермы <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Шеф Элара Восс <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Дегустационный Ритуал · Семь Актов <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Мастер-Сомелье в Зале <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Приватные Ужины Доступны <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Три Звезды Мишлен <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Осн. 2019 · Ташкент <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">1 400 Этикеток Погреба <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Кухня Прямо с Фермы <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Шеф Элара Восс <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Дегустационный Ритуал · Семь Актов <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Мастер-Сомелье в Зале <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Приватные Ужины Доступны <span class="marquee-sep">✦</span></span>
   </div>
 </div>
 
 <!-- MENU -->
 <section id="menu-s" style="background:var(--dark1);">
   <div style="text-align:center;margin-bottom:3.5rem;">
-    <p class="s-eye" style="justify-content:center;" data-words>The Culinary Arts</p>
-    <h2 class="s-title" style="text-align:center;" data-words>A Study in Perfection</h2>
+    <p class="s-eye" style="justify-content:center;" data-words>Кулинарное Искусство</p>
+    <h2 class="s-title" style="text-align:center;" data-words>Исследование Совершенства</h2>
     <div class="s-rule" style="margin:0 auto 1.2rem;"></div>
-    <p class="s-body" style="margin:0 auto;text-align:center;max-width:480px;" data-words>Seven compositions. One narrative. Each course changes weekly to honour the earth's finest offerings at their absolute peak.</p>
+    <p class="s-body" style="margin:0 auto;text-align:center;max-width:480px;" data-words>Семь композиций. Один нарратив. Каждый курс меняется еженедельно, чтобы воздать должное лучшим дарам земли на пике их зрелости.</p>
   </div>
 
   <div class="m-tabs">
-    <button class="m-tab on" onclick="switchM('tasting',this)">Tasting Ritual · Seven Courses</button>
-    <button class="m-tab" onclick="switchM('alacarte',this)">À La Carte Selections</button>
-    <button class="m-tab" onclick="switchM('cellar',this)">The Cellar & Libations</button>
+    <button class="m-tab on" onclick="switchM('tasting',this)">Дегустационный Ритуал · Семь Курсов</button>
+    <button class="m-tab" onclick="switchM('alacarte',this)">À La Carte</button>
+    <button class="m-tab" onclick="switchM('cellar',this)">Погреб &amp; Напитки</button>
   </div>
 
   <!-- TASTING -->
   <div id="tp-tasting" class="tp on">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
       <div>
-        <p class="s-eye" data-words>The Grand Ritual</p>
-        <h3 class="s-title" style="font-size:clamp(18px,3vw,26px);" data-words>Seven Acts of Gastronomy</h3>
-        <p class="s-body" style="font-size:clamp(13px,2vw,14.5px);" data-words>A journey from the sea to the earth. Two hours. Seven acts. One unforgettable evening.</p>
+        <p class="s-eye" data-words>Великий Ритуал</p>
+        <h3 class="s-title" style="font-size:clamp(18px,3vw,26px);" data-words>Семь Актов Гастрономии</h3>
+        <p class="s-body" style="font-size:clamp(13px,2vw,14.5px);" data-words>Путешествие от моря к земле. Два часа. Семь актов. Один незабываемый вечер.</p>
       </div>
       <div style="text-align:right;">
-        <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">Per Guest · Excl. Pairings</p>
+        <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;">На Гостя · Без Пейринга</p>
         <p style="font-family:'Cinzel',serif;font-size:clamp(32px,6vw,46px);font-weight:300;background:linear-gradient(110deg,var(--gold3),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">$385</p>
-        <p style="font-size:13px;font-style:italic;color:var(--cream3);">Sommelier pairing from $195</p>
+        <p style="font-size:13px;font-style:italic;color:var(--cream3);">Подбор вин сомелье от $195</p>
       </div>
     </div>
 
     <div class="course">
       <div class="c-num">I</div>
       <div class="c-info">
-        <p class="c-name" data-words>Kumamoto Oyster, Champagne Granité</p>
-        <p class="c-desc">A single oyster harvested at dawn. Champagne granité, Oscietra caviar, preserved Meyer lemon oil, bronze fennel.</p>
-        <div class="c-tags"><span class="c-tag">Amuse-Bouche</span><span class="c-tag">Raw</span></div>
+        <p class="c-name" data-words>Устрица Кумамото, Шампанское Гранитэ</p>
+        <p class="c-desc">Одна устрица, собранная на рассвете. Гранитэ из шампанского, икра Осетра, масло консервированного лимона Мейер, бронзовый фенхель.</p>
+        <div class="c-tags"><span class="c-tag">Амюз-Буш</span><span class="c-tag">Сырое</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1606731219412-3b1a1c9c30a4?w=440&q=85&auto=format&fit=crop" alt="Oyster course" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1606731219412-3b1a1c9c30a4?w=440&q=85&auto=format&fit=crop" alt="Устрица" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course">
       <div class="c-num">II</div>
       <div class="c-info">
-        <p class="c-name" data-words>Hokkaido Scallop, Dashi Beurre Blanc</p>
-        <p class="c-desc">Dry-brined four hours, seared in clarified butter. Finger lime caviar, yuzu foam, toasted nori crumble, gold leaf.</p>
-        <div class="c-tags"><span class="c-tag">Seafood</span><span class="c-tag">Signature</span></div>
+        <p class="c-name" data-words>Гребешок Хоккайдо, Дашибёр Блан</p>
+        <p class="c-desc">Маринованный четыре часа в сухом рассоле, обжаренный в топлёном масле. Икра из пальчикового лайма, юзу-пена, хрустящая крошка нори, золотой лист.</p>
+        <div class="c-tags"><span class="c-tag">Морепродукты</span><span class="c-tag">Сигнатюр</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=440&q=85&auto=format&fit=crop" alt="Scallop" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=440&q=85&auto=format&fit=crop" alt="Гребешок" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course">
       <div class="c-num">III</div>
       <div class="c-info">
-        <p class="c-name" data-words>Black Truffle Velouté</p>
-        <p class="c-desc">Périgord black truffle reduction, celery root velouté, chive oil, micro watercress, single truffle shaving at table.</p>
-        <div class="c-tags"><span class="c-tag">Soup</span><span class="c-tag">Truffle</span></div>
+        <p class="c-name" data-words>Велюте из Чёрного Трюфеля</p>
+        <p class="c-desc">Редукция трюфеля Перигор, велюте из корня сельдерея, масло из лука-резанца, микрокресс, стружка трюфеля у стола.</p>
+        <div class="c-tags"><span class="c-tag">Суп</span><span class="c-tag">Трюфель</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=440&q=85&auto=format&fit=crop" alt="Soup course" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=440&q=85&auto=format&fit=crop" alt="Суп" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course">
       <div class="c-num">IV</div>
       <div class="c-info">
-        <p class="c-name" data-words>Kōji-Brined Duck, Miso Caramel</p>
-        <p class="c-desc">Aged 72 hours in white kōji, lacquered with aged miso and dark honey. Compressed plum, toasted barley, chrysanthemum.</p>
-        <div class="c-tags"><span class="c-tag">Poultry</span><span class="c-tag">House-Aged</span></div>
+        <p class="c-name" data-words>Утка в Коджи, Мисо-Карамель</p>
+        <p class="c-desc">Выдержанная 72 часа в белом коджи, глазированная выдержанным мисо и тёмным мёдом. Прессованная слива, поджаренный ячмень, хризантема.</p>
+        <div class="c-tags"><span class="c-tag">Птица</span><span class="c-tag">Собственная Выдержка</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=440&q=85&auto=format&fit=crop" alt="Duck course" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=440&q=85&auto=format&fit=crop" alt="Утка" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course">
       <div class="c-num">V</div>
       <div class="c-info">
-        <p class="c-name" data-words>A12 Wagyu Short Rib, 48 Hours</p>
-        <p class="c-desc">Braised 48 hours in aged Barolo. Coal-roasted bone marrow, pickled green peppercorn, 30-year aged jus, fleur de sel.</p>
-        <div class="c-tags"><span class="c-tag">A12 Wagyu</span><span class="c-tag">Red Meat</span></div>
+        <p class="c-name" data-words>Вагю A12, Рёбра 48 Часов</p>
+        <p class="c-desc">Тушёное 48 часов в выдержанном Бароло. Костный мозг на углях, маринованный зелёный перец, джус 30-летней выдержки, флёр де сель.</p>
+        <div class="c-tags"><span class="c-tag">A12 Вагю</span><span class="c-tag">Красное Мясо</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=440&q=85&auto=format&fit=crop" alt="Wagyu" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=440&q=85&auto=format&fit=crop" alt="Вагю" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course">
       <div class="c-num">VI</div>
       <div class="c-info">
-        <p class="c-name" data-words>Artisanal Cheese Interlude</p>
-        <p class="c-desc">A curated selection of three aged cheeses. Fig conserve, candied walnuts, sablé breton, quince paste, honeycomb.</p>
-        <div class="c-tags"><span class="c-tag">Cheese</span><span class="c-tag">Interlude</span></div>
+        <p class="c-name" data-words>Сырная Интерлюдия</p>
+        <p class="c-desc">Подборка трёх выдержанных сыров. Инжирный конфитюр, засахаренные грецкие орехи, бретонское сабле, паста из айвы, медовые соты.</p>
+        <div class="c-tags"><span class="c-tag">Сыр</span><span class="c-tag">Интерлюдия</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a2d4?w=440&q=85&auto=format&fit=crop" alt="Cheese course" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a2d4?w=440&q=85&auto=format&fit=crop" alt="Сыр" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
     <div class="course" style="border-bottom:none;">
       <div class="c-num">VII</div>
       <div class="c-info">
-        <p class="c-name" data-words>Valrhona Grand Cru, Sansho Pepper</p>
-        <p class="c-desc">70% Guanaja ganache, hazelnut praline, yuzu cream, candied violet, 24-karat gold leaf. A final act of pure indulgence.</p>
-        <div class="c-tags"><span class="c-tag">Dessert</span><span class="c-tag">Signature</span></div>
+        <p class="c-name" data-words>Valrhona Grand Cru, Перец Сансё</p>
+        <p class="c-desc">Ганаш 70% Guanaja, пралине из фундука, юзу-крем, засахаренная фиалка, золотой лист 24 карата. Финальный акт чистого наслаждения.</p>
+        <div class="c-tags"><span class="c-tag">Десерт</span><span class="c-tag">Сигнатюр</span></div>
       </div>
       <div class="c-img">
-        <img class="kb-img" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=440&q=85&auto=format&fit=crop" alt="Dessert" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
+        <img class="kb-img" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=440&q=85&auto=format&fit=crop" alt="Десерт" loading="lazy" onerror="this.parentNode.innerHTML='<div class=spin-ph><div class=spin></div></div>'">
       </div>
     </div>
   </div>
@@ -595,22 +614,22 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   <!-- ALA CARTE -->
   <div id="tp-alacarte" class="tp">
     <div class="ac-grid">
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=600&q=85&auto=format&fit=crop" alt="Burrata" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">First Act</p><p class="ac-name" data-words>Burrata, Heirloom Tomato Consommé</p><p class="ac-desc">House-pulled burrata, 12-hour tomato consommé, basil seed, smoked olive oil, sourdough tuile.</p><p class="ac-price">$34</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=85&auto=format&fit=crop" alt="Lobster" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">First Act</p><p class="ac-name" data-words>Lobster Bisque, Aged Cognac</p><p class="ac-desc">Maine lobster bisque, 20-year cognac, tarragon oil, brioche soldiers, caviar crème fraîche.</p><p class="ac-price">$48</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=85&auto=format&fit=crop" alt="Fish" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Second Act</p><p class="ac-name" data-words>Dover Sole, Beurre Noisette</p><p class="ac-desc">Pan-basted Dover sole, capers, preserved lemon, brown butter, chervil, pomme gratin.</p><p class="ac-price">$88</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=85&auto=format&fit=crop" alt="Steak" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Second Act</p><p class="ac-name" data-words>Rib-Eye, 45-Day Dry-Aged</p><p class="ac-desc">Périgord truffle jus, charred leek ash, pomme purée, bordelaise sauce, fleur de sel.</p><p class="ac-price">$145</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85&auto=format&fit=crop" alt="Risotto" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Second Act</p><p class="ac-name" data-words>Black Truffle Risotto</p><p class="ac-desc">Carnaroli rice, aged Parmigiano Reggiano 36-month, fresh Périgord truffle, Champagne reduction.</p><p class="ac-price">$72</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1579372786545-d24232daf58a?w=600&q=85&auto=format&fit=crop" alt="Lamb" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Second Act</p><p class="ac-name" data-words>Rack of Lamb, Herb Crust</p><p class="ac-desc">French-trimmed rack, pistachio and herb crust, rosemary jus, roasted garlic, haricots verts.</p><p class="ac-price">$96</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=600&q=85&auto=format&fit=crop" alt="Буррата" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Первый Акт</p><p class="ac-name" data-words>Буррата, Консоме из Томатов</p><p class="ac-desc">Буррата ручной вытяжки, томатное консоме 12 часов, семена базилика, копчёное оливковое масло, крутон из закваски.</p><p class="ac-price">$34</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=85&auto=format&fit=crop" alt="Омар" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Первый Акт</p><p class="ac-name" data-words>Биск из Омара, Выдержанный Коньяк</p><p class="ac-desc">Биск из омара Мэн, коньяк 20 лет, масло тархуна, бриошь, крем-фреш с икрой.</p><p class="ac-price">$48</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=85&auto=format&fit=crop" alt="Рыба" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Второй Акт</p><p class="ac-name" data-words>Дуврская Камбала, Бёр Нуазет</p><p class="ac-desc">Камбала на сливочном масле, каперсы, консервированный лимон, коричневое масло, кервель, гратен из картофеля.</p><p class="ac-price">$88</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=85&auto=format&fit=crop" alt="Стейк" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Второй Акт</p><p class="ac-name" data-words>Рибай, 45 Дней Сухого Созревания</p><p class="ac-desc">Джус из трюфеля Перигор, зола из обугленного лука-порея, пюре из картофеля, соус бордолез, флёр де сель.</p><p class="ac-price">$145</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85&auto=format&fit=crop" alt="Ризотто" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Второй Акт</p><p class="ac-name" data-words>Ризотто с Чёрным Трюфелем</p><p class="ac-desc">Рис Карнароли, выдержанный пармезан 36 месяцев, свежий трюфель Перигор, редукция из шампанского.</p><p class="ac-price">$72</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1579372786545-d24232daf58a?w=600&q=85&auto=format&fit=crop" alt="Ягнёнок" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Второй Акт</p><p class="ac-name" data-words>Каре Ягнёнка, Травяная Корочка</p><p class="ac-desc">Каре французской обрезки, корочка из фисташек и трав, джус с розмарином, жареный чеснок, стручковая фасоль.</p><p class="ac-price">$96</p></div>
     </div>
   </div>
 
   <!-- CELLAR -->
   <div id="tp-cellar" class="tp">
     <div class="ac-grid">
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=85&auto=format&fit=crop" alt="Wine" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Sommelier Pairing</p><p class="ac-name" data-words>Grand Cru Wine Journey</p><p class="ac-desc">Seven pours by our Master Sommelier. Burgundy, Bordeaux, Barolo — all aged minimum 12 years.</p><p class="ac-price">$295 per guest</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=85&auto=format&fit=crop" alt="Non-alc" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Non-Alcoholic Ritual</p><p class="ac-name" data-words>The Garden & Ferment Pairing</p><p class="ac-desc">Seven lacto-fermented, shrub-based, and cold-pressed compositions in dialogue with the kitchen.</p><p class="ac-price">$165 per guest</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=85&auto=format&fit=crop" alt="Cocktail" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Signature Cocktail</p><p class="ac-name" data-words>Aurum Negroni, Gold Flake</p><p class="ac-desc">18-year barrel-aged gin, Campari reduction, Cocchi Storico, orange oil, edible 24-karat gold.</p><p class="ac-price">$38</p></div>
-      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=600&q=85&auto=format&fit=crop" alt="Whisky" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Signature Cocktail</p><p class="ac-name" data-words>Yamazaki 12yr Highball</p><p class="ac-desc">12-year Suntory Yamazaki, hand-pressed yuzu shrub, Japanese sparkling water, shiso, crystallised citrus.</p><p class="ac-price">$32</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=85&auto=format&fit=crop" alt="Вино" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Пейринг Сомелье</p><p class="ac-name" data-words>Путешествие Гран Крю</p><p class="ac-desc">Семь подач от Мастер-Сомелье. Бургундия, Бордо, Бароло — все выдержаны минимум 12 лет.</p><p class="ac-price">$295 на гостя</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=85&auto=format&fit=crop" alt="Безалкогольное" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Безалкогольный Ритуал</p><p class="ac-name" data-words>Сад &amp; Ферментация</p><p class="ac-desc">Семь лакто-ферментированных, кустарных и холодного отжима композиций в диалоге с кухней.</p><p class="ac-price">$165 на гостя</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=85&auto=format&fit=crop" alt="Коктейль" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Фирменный Коктейль</p><p class="ac-name" data-words>Негрони Aurum, Золотые Хлопья</p><p class="ac-desc">Джин 18 лет бочковой выдержки, редукция Кампари, Cocchi Storico, масло апельсина, съедобное золото 24 карата.</p><p class="ac-price">$38</p></div>
+      <div class="ac-card"><img class="ac-img kb-img" src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=600&q=85&auto=format&fit=crop" alt="Виски" loading="lazy" onerror="this.style.display='none'"><p class="ac-cat">Фирменный Коктейль</p><p class="ac-name" data-words>Хайбол Yamazaki 12 лет</p><p class="ac-desc">Suntory Yamazaki 12 лет, свежевыжатый юзу-шраб, японская газированная вода, шисо, кристаллизованный цитрус.</p><p class="ac-price">$32</p></div>
     </div>
   </div>
 </section>
@@ -853,6 +872,10 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
       <svg class="rating-star" data-v="4" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
       <svg class="rating-star" data-v="5" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
     </div>
+    <div id="rating-text-wrap" style="display:none;width:100%;max-width:460px;margin:0 auto 1rem;">
+      <textarea id="rating-text" class="rating-textarea" placeholder="Поделитесь впечатлениями о вашем вечере в Aurum (необязательно)..." maxlength="400"></textarea>
+      <p class="rating-char-count"><span id="rating-char-n">0</span>/400</p>
+    </div>
     <button class="rating-submit-btn" id="rating-submit-btn" onclick="submitRating()" style="display:none;">Оставить Отзыв</button>
     <p class="rating-locked-msg" id="rating-locked-msg" style="display:none;"></p>
   </div>
@@ -967,13 +990,14 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
         <polyline class="success-check-tick" points="20,36 30,46 50,26"/>
       </svg>
     </div>
-    <h2 class="success-heading">Стол Забронирован</h2>
+    <h2 class="success-heading">Бронирование Принято</h2>
     <div class="success-summary">
       <div class="success-row"><span class="success-lbl">Дата</span><span class="success-val" id="sc-date">—</span></div>
       <div class="success-row"><span class="success-lbl">Время</span><span class="success-val" id="sc-time">—</span></div>
       <div class="success-row"><span class="success-lbl">Гостей</span><span class="success-val" id="sc-guests">—</span></div>
       <div class="success-row"><span class="success-lbl">Повод</span><span class="success-val" id="sc-occ">—</span></div>
     </div>
+    <p class="success-email-note">Ваше бронирование успешно принято. Письмо с подтверждением и деталями бронирования отправлено на ваш email. Пожалуйста, проверьте входящие.</p>
     <button class="success-close" onclick="closeSuccess()">Закрыть</button>
     <p class="success-timer" id="sc-timer">Закрытие через 5 секунд…</p>
   </div>
@@ -1300,32 +1324,78 @@ function doBooking(){
   const occ=document.getElementById('b-occasion').value;
   const notes=document.getElementById('b-notes').value;
   const err=document.getElementById('book-err');
+  const submitBtn=document.querySelector('#overlay-booking .f-submit');
   err.style.display='none';
-  if(!date||!guests||!time){ err.textContent='Please select date, guests, and seating time.'; err.style.display='block'; return; }
 
-  // FIX: block past-date reservations
+  // Validation
+  if(!date||!guests||!time){ err.textContent='Пожалуйста, выберите дату, количество гостей и время.'; err.style.display='block'; return; }
   const today=new Date().toISOString().split('T')[0];
-  if(date<today){ err.textContent='Please select a future date.'; err.style.display='block'; return; }
+  if(date<today){ err.textContent='Пожалуйста, выберите будущую дату.'; err.style.display='block'; return; }
 
   const now=new Date();
-  // FIX: normalize '5+' to numeric 5 for covers calculation
   const guestNum = guests==='5+' ? 5 : parseInt(guests)||2;
   const res={
     id: Date.now(),
-    name: DB.session?DB.session.name:'Guest',
+    name: DB.session?DB.session.name:'Гость',
     email: DB.session?DB.session.email:'',
     date, time,
     guests: String(guestNum),
-    occasion: occ||'General Dining',
+    occasion: occ||'Общий Ужин',
     notes,
-    reservedAt: now.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}),
+    reservedAt: now.toLocaleString('ru-RU',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}),
     reservedAtFull: now.toISOString(),
     status:'pending'
   };
-  DB.reservations.push(res);
-  saveReservations();
-  closeOverlay('booking');
-  showSuccess(res);
+
+  // Loading state
+  submitBtn.textContent='Отправляем…';
+  submitBtn.disabled=true;
+  submitBtn.style.opacity='.6';
+
+  // Format date for email
+  const dateFormatted=new Date(res.date+'T12:00:00').toLocaleDateString('ru-RU',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+
+  // EmailJS template parameters
+  const ejsParams={
+    to_email:   res.email,
+    to_name:    res.name,
+    res_date:   dateFormatted,
+    res_time:   res.time,
+    res_guests: res.guests,
+    res_occasion: res.occasion,
+    res_notes:  res.notes||'—',
+    res_id:     String(res.id)
+  };
+
+  // Check if EmailJS is configured (not using placeholder keys)
+  const ejsConfigured = EJS_SERVICE_ID !== 'YOUR_SERVICE_ID' && EJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
+
+  const afterEmail=()=>{
+    DB.reservations.push(res);
+    saveReservations();
+    submitBtn.textContent='Подтвердить Бронирование';
+    submitBtn.disabled=false;
+    submitBtn.style.opacity='1';
+    closeOverlay('booking');
+    showSuccess(res);
+  };
+
+  const onEmailFail=(errMsg)=>{
+    submitBtn.textContent='Подтвердить Бронирование';
+    submitBtn.disabled=false;
+    submitBtn.style.opacity='1';
+    err.textContent='Не удалось отправить подтверждение по email: '+errMsg+'. Пожалуйста, попробуйте ещё раз или свяжитесь с нами по телефону.';
+    err.style.display='block';
+  };
+
+  if(ejsConfigured && res.email){
+    emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, ejsParams)
+      .then(()=>{ afterEmail(); })
+      .catch((e)=>{ onEmailFail(e.text||'Ошибка сети'); });
+  } else {
+    // EmailJS not yet configured — save reservation without email
+    afterEmail();
+  }
 }
 
 /* ── SUCCESS MODAL ── */
@@ -1455,7 +1525,8 @@ function initRating(){
         if(i < r) s.classList.add('selected');
       });
       invite.textContent = 'Ваша оценка сохранена';
-      lockedMsg.textContent = 'Вы уже оставили ' + r + ' ' + (r===1?'звезду':r<5?'звезды':'звёзд') + '. Спасибо.';
+      const savedText = user.reviewText ? ' — «' + user.reviewText.slice(0,80) + (user.reviewText.length>80?'…':'') + '»' : '';
+      lockedMsg.textContent = 'Вы уже поставили ' + r + ' ' + (r===1?'звезду':r<5?'звезды':'звёзд') + savedText + '. Спасибо.';
       lockedMsg.style.display = 'block';
       return;
     }
@@ -1472,41 +1543,47 @@ function initRating(){
         selectedRating = parseInt(star.dataset.v);
         stars.forEach((s,i) => s.classList.toggle('selected', i < selectedRating));
         submitBtn.style.display = 'inline-block';
+        const tw = document.getElementById('rating-text-wrap');
+        if(tw) tw.style.display = 'block';
       });
     });
   } else {
-    // Not logged in — prompt to log in
     invite.textContent = 'Войдите, чтобы оценить ваш вечер';
     stars.forEach(s => { s.classList.add('locked'); s.style.opacity='.3'; });
   }
+  // Char counter
+  const ta = document.getElementById('rating-text');
+  const cn = document.getElementById('rating-char-n');
+  if(ta && cn) ta.addEventListener('input', ()=>{ cn.textContent = ta.value.length; });
 }
 
 function submitRating(){
   if(!selectedRating || !DB.session) return;
   const user = DB.users.find(u => u.email === DB.session.email);
-  if(!user || user.rating) return; // already rated, no second chance
+  if(!user || user.rating) return;
 
-  // Save rating to user account
+  const textEl = document.getElementById('rating-text');
+  const reviewText = textEl ? textEl.value.trim().slice(0,400) : '';
+
   user.rating = selectedRating;
+  user.reviewText = reviewText;
   user.ratedAt = new Date().toISOString();
   saveUsers();
 
-  // Lock stars visually
   const stars = document.querySelectorAll('.rating-star');
   stars.forEach(s => s.classList.add('locked'));
   document.getElementById('rating-submit-btn').style.display = 'none';
+  const twEl = document.getElementById('rating-text-wrap');
+  if(twEl) twEl.style.display = 'none';
   document.getElementById('rating-invite').textContent = 'Ваша оценка сохранена';
-  document.getElementById('rating-locked-msg').textContent = 'Спасибо! Вы поставили ' + selectedRating + ' ' + (selectedRating===1?'звезду':selectedRating<5?'звезды':'звёзд') + '.';
+  document.getElementById('rating-locked-msg').textContent = 'Спасибо! Вы поставили ' + selectedRating + ' ' + (selectedRating===1?'звезду':selectedRating<5?'звезды':'звёзд') + (reviewText?' — ваш отзыв опубликован.':'.');
   document.getElementById('rating-locked-msg').style.display = 'block';
 
-  // Dynamically inject live review card into testimonials
-  injectLiveReview(user, selectedRating);
-
-  // Update admin feedback log
-  if(DB.session.role === 'admin') renderAdminFeedback();
+  injectLiveReview(user, selectedRating, reviewText);
+  renderAdminFeedback();
 }
 
-function injectLiveReview(user, rating){
+function injectLiveReview(user, rating, text){
   const grid = document.getElementById('testi-grid-live');
   if(!grid) return;
   const starsHtml = Array.from({length:5},(_,i)=>
@@ -1514,9 +1591,10 @@ function injectLiveReview(user, rating){
   ).join('');
   const card = document.createElement('div');
   card.className = 'testi-card user-review';
+  const textHtml = text ? `<p class="testi-body" style="margin-top:.6rem;">${safe(text)}</p>` : '';
   card.innerHTML = `
     <div class="testi-stars">${starsHtml}</div>
-    <p class="testi-body">— ${safe(user.name)}</p>
+    ${textHtml}
     <div class="testi-rule"></div>
     <p class="testi-name">${safe(user.name)}</p>
     <p class="testi-src">Гость Aurum · ${new Date().toLocaleDateString('ru-RU',{month:'long',day:'numeric',year:'numeric'})}</p>
@@ -1537,10 +1615,11 @@ function renderAdminFeedback(){
     const starsHtml = Array.from({length:5},(_,i)=>
       `<span style="color:${i<r?'var(--gold)':'rgba(201,169,110,.18)'};font-size:13px;">★</span>`
     ).join('');
-    return `<div class="a-row" style="grid-template-columns:1fr 1fr 1fr;">
+    const reviewSnippet = u.reviewText ? `<br><span style="font-size:10px;font-style:italic;color:rgba(200,184,154,.45);">"${safe(u.reviewText.slice(0,60))}${u.reviewText.length>60?'…':''}"</span>` : '';
+    return `<div class="a-row" style="grid-template-columns:1fr 1fr 1.5fr;">
       <span class="a-cell name">${safe(u.name)}</span>
       <span class="a-cell" style="font-size:11px;">${safe(u.email)}</span>
-      <span class="a-cell">${starsHtml} ${r>0?'('+r+'/5)':'<span style="font-size:10px;color:rgba(201,169,110,.35);font-style:italic;">Не оценил</span>'}</span>
+      <span class="a-cell">${starsHtml} ${r>0?'('+r+'/5)'+reviewSnippet:'<span style="font-size:10px;color:rgba(201,169,110,.35);font-style:italic;">Не оценил</span>'}</span>
     </div>`;
   }).join('');
 }
