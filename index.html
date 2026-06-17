@@ -168,6 +168,58 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,5vw,3.5rem);}
 .a-filter-btn.on,.a-filter-btn:hover{color:var(--gold);border-color:var(--gold);}
 .a-section-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
 
+/* ── TOP CREDIT BAR ── */
+#top-credit-bar{width:100%;background:rgba(201,169,110,.06);border-bottom:.5px solid rgba(201,169,110,.14);text-align:center;padding:.45rem 1rem;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.38em;color:rgba(201,169,110,.45);text-transform:uppercase;position:relative;z-index:200;}
+
+/* ── LARGER STAT ICONS ── */
+.stat-icon-row svg{width:44px!important;height:44px!important;}
+
+/* ── LARGER BODY TEXT GLOBALLY ── */
+.s-body{font-size:clamp(15px,2.2vw,17px)!important;line-height:2!important;}
+.stat-s{font-size:clamp(13px,1.8vw,15px)!important;color:var(--cream2)!important;}
+.stat-detail{font-size:clamp(13px,1.8vw,14px)!important;color:rgba(200,184,154,.5)!important;}
+.stat-l{font-size:clamp(12px,1.8vw,14px)!important;letter-spacing:.22em!important;}
+.testi-body{font-size:clamp(15px,2vw,17px)!important;line-height:1.9!important;}
+.testi-name{font-size:10px!important;letter-spacing:.26em!important;}
+.testi-src{font-size:12.5px!important;}
+.c-desc{font-size:clamp(13px,1.8vw,14.5px)!important;}
+.ac-desc{font-size:clamp(13px,1.8vw,14px)!important;}
+.h-cell{font-size:clamp(13px,1.9vw,15px)!important;}
+.f-lbl{font-size:9.5px!important;letter-spacing:.2em!important;}
+
+/* ── LOCATION CARD ── */
+.location-card{background:linear-gradient(145deg,rgba(201,169,110,.05),rgba(201,169,110,.02));border:.5px solid rgba(201,169,110,.2);padding:clamp(1.5rem,3vw,2.2rem);position:relative;overflow:hidden;}
+.location-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.4),transparent);}
+.location-pin-wrap{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
+.location-address{margin-bottom:1.2rem;}
+.location-venue{font-family:'Cinzel',serif;font-size:clamp(16px,2.5vw,20px);letter-spacing:.14em;background:linear-gradient(110deg,var(--gold3),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
+.location-city{font-size:clamp(15px,2.2vw,17px);font-style:italic;color:var(--cream2);letter-spacing:.04em;}
+.location-divider{width:100%;height:.5px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.2),transparent);margin:.9rem 0;}
+.location-contact-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;}
+.location-phone-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:rgba(201,169,110,.6);text-transform:uppercase;}
+.location-phone{font-size:clamp(16px,2.5vw,20px);color:#ffffff!important;font-style:italic;text-decoration:none;display:block;transition:color .3s;}
+.location-phone:hover{color:var(--gold)!important;}
+.location-valet{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:rgba(201,169,110,.4);text-transform:uppercase;}
+
+/* ── INTERACTIVE RATING ── */
+.rating-section{text-align:center;padding:clamp(2rem,4vw,3.5rem) clamp(1rem,4vw,2rem);border-top:.5px solid rgba(201,169,110,.1);margin-top:2rem;}
+.rating-deco-line{width:60px;height:.5px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.3),transparent);margin:0 auto 1.5rem;}
+.rating-invite{font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:.3em;color:rgba(201,169,110,.55);text-transform:uppercase;margin-bottom:1.4rem;}
+.rating-stars-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1.2rem;}
+.rating-star{width:42px;height:42px;cursor:pointer;transition:transform .2s;}
+.rating-star .rstar-poly{fill:none;stroke:url(#rg1);stroke-width:1.2;stroke-linejoin:round;transition:fill .18s,stroke .18s;}
+.rating-star.hovered .rstar-poly,.rating-star.selected .rstar-poly{fill:url(#rg1);stroke:url(#rg1);}
+.rating-star.locked{cursor:default;}
+.rating-star:not(.locked):hover{transform:scale(1.15);}
+.rating-submit-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;background:transparent;border:.5px solid rgba(201,169,110,.4);color:var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;min-height:44px;animation:fadeInUp .4s ease both;}
+.rating-submit-btn:hover{background:rgba(201,169,110,.1);}
+.rating-locked-msg{font-size:12px;font-style:italic;color:rgba(200,184,154,.45);margin-top:.6rem;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.testi-card.user-review{border:.5px solid rgba(201,169,110,.22);animation:fadeInUp .5s ease both;}
+.testi-card.user-review .testi-name{background:linear-gradient(110deg,var(--gold3),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.a-tbl-head{grid-template-columns:1fr 1fr 1fr 1fr 1.2fr .6fr!important;}
+.a-row{grid-template-columns:1fr 1fr 1fr 1fr 1.2fr .6fr!important;}
+
 /* ── CUSTOM CURSOR ── */
 .cursor-dot{position:fixed;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s,transform .2s;mix-blend-mode:difference;}
 .cursor-ring{position:fixed;width:32px;height:32px;border:.5px solid rgba(201,169,110,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s,transform .08s linear;}
@@ -360,31 +412,34 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <!-- BACK TO TOP -->
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
+<!-- TOP CREDIT BANNER -->
+<div id="top-credit-bar">СОЗДАНО С ЛЮБОВЬЮ · KHODJIEV F</div>
+
 <!-- NAV -->
 <nav id="nav">
   <span class="n-logo" onclick="closePanels()">A U R U M</span>
   <ul class="n-links">
-    <li><a href="#menu-s">The Table</a></li>
-    <li><a href="#story-s">Our Provenance</a></li>
-    <li><a href="#hours-s">Hours & Address</a></li>
-    <li><a href="#" onclick="openAdminLogin();return false;">Administration</a></li>
+    <li><a href="#menu-s">Меню</a></li>
+    <li><a href="#story-s">О Нас</a></li>
+    <li><a href="#hours-s">Часы & Адрес</a></li>
+    <li><a href="#" onclick="openAdminLogin();return false;">Администрация</a></li>
   </ul>
-  <button class="n-btn" onclick="openOverlay('reserve')">Secure Your Table</button>
-  <button class="n-hamburger" onclick="openMobileMenu()" aria-label="Open menu">☰</button>
+  <button class="n-btn" onclick="openOverlay('reserve')">Забронировать Стол</button>
+  <button class="n-hamburger" onclick="openMobileMenu()" aria-label="Открыть меню">☰</button>
 </nav>
 
 <!-- MOBILE FULLSCREEN MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-menu-logo">A U R U M</span>
-  <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
-  <a href="#menu-s" onclick="closeMobileMenu()">The Table</a>
-  <a href="#story-s" onclick="closeMobileMenu()">Our Provenance</a>
-  <a href="#hours-s" onclick="closeMobileMenu()">Hours & Address</a>
-  <button class="mm-link" onclick="closeMobileMenu();openAdminLogin();">Administration</button>
+  <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Закрыть меню">✕</button>
+  <a href="#menu-s" onclick="closeMobileMenu()">Меню</a>
+  <a href="#story-s" onclick="closeMobileMenu()">О Нас</a>
+  <a href="#hours-s" onclick="closeMobileMenu()">Часы & Адрес</a>
+  <button class="mm-link" onclick="closeMobileMenu();openAdminLogin();">Администрация</button>
 </div>
 
 <!-- MOBILE STICKY RESERVE -->
-<button class="mobile-reserve-btn" onclick="openOverlay('reserve')">Secure Your Table</button>
+<button class="mobile-reserve-btn" onclick="openOverlay('reserve')">Забронировать Стол</button>
 
 <!-- HERO -->
 <div class="hero">
@@ -628,10 +683,10 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
         </svg>
       </div>
       <p class="stat-n" data-words>III</p>
-      <p class="stat-l">Michelin Stars</p>
+      <p class="stat-l">Звёзды Мишлен</p>
       <div class="stat-divider"><span>✦</span></div>
-      <p class="stat-s">Consecutive since 2021</p>
-      <p class="stat-detail">Awarded by the Guide Michelin France · Central Asia Edition, recognising culinary excellence of the highest order.</p>
+      <p class="stat-s">Ежегодно с 2021 года</p>
+      <p class="stat-detail">Присвоено Гидом Мишлен — Издание Центральной Азии, признание кулинарного совершенства высшего уровня.</p>
       <div class="stat-deco-line"></div>
     </div>
 
@@ -653,10 +708,10 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
         </svg>
       </div>
       <p class="stat-n" data-words>1,400</p>
-      <p class="stat-l">Cellar Labels</p>
+      <p class="stat-l">Этикеток Погреба</p>
       <div class="stat-divider"><span>✦</span></div>
-      <p class="stat-s">Curated over three decades</p>
-      <p class="stat-detail">Burgundy Grand Crus, First-Growth Bordeaux, vertical Barolo — each bottle selected personally by our Master Sommelier.</p>
+      <p class="stat-s">Собрано за три десятилетия</p>
+      <p class="stat-detail">Бургундские Гран Крю, Бордо Первого Класса, вертикальное Бароло — каждая бутылка выбрана лично нашим Мастер-Сомелье.</p>
       <div class="stat-deco-line"></div>
     </div>
 
@@ -680,10 +735,10 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
         </svg>
       </div>
       <p class="stat-n" data-words>12</p>
-      <p class="stat-l">Farm Partners</p>
+      <p class="stat-l">Партнёров-Фермеров</p>
       <div class="stat-divider"><span>✦</span></div>
-      <p class="stat-s">Exclusive supply, farm-to-table</p>
-      <p class="stat-detail">From Kagoshima A12 Wagyu to single-estate saffron — every ingredient arrives under a direct exclusivity agreement.</p>
+      <p class="stat-s">Эксклюзивные поставки, ферма-стол</p>
+      <p class="stat-detail">От Вагю A12 из Кагосимы до шафрана с единственной плантации — каждый ингредиент поступает по соглашению об эксклюзивности.</p>
       <div class="stat-deco-line"></div>
     </div>
   </div>
@@ -695,24 +750,46 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <section id="hours-s" style="background:var(--dark1);">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);">
     <div>
-      <p class="s-eye" data-words>Plan Your Visit</p>
-      <h2 class="s-title" data-words>Hours & Address</h2>
-      <div class="s-rule"></div>
+      <p class="s-eye" data-words style="text-align:center;justify-content:center;">Планирование Визита</p>
+      <h2 class="s-title" data-words style="text-align:center;">Часы Работы</h2>
+      <div class="s-rule" style="margin:0 auto;"></div>
       <div class="h-grid">
-        <div class="h-cell label">Wednesday – Thursday</div><div class="h-cell val">6:00 pm – 10:30 pm</div>
-        <div class="h-cell label">Friday – Saturday</div><div class="h-cell val">5:30 pm – 11:00 pm</div>
-        <div class="h-cell label">Sunday</div><div class="h-cell val">5:30 pm – 10:00 pm</div>
-        <div class="h-cell label">Monday – Tuesday</div><div class="h-cell val">Closed</div>
+        <div class="h-cell label">Среда – Четверг</div><div class="h-cell val">18:00 – 22:30</div>
+        <div class="h-cell label">Пятница – Суббота</div><div class="h-cell val">17:30 – 23:00</div>
+        <div class="h-cell label">Воскресенье</div><div class="h-cell val">17:30 – 22:00</div>
+        <div class="h-cell label">Понедельник – Вторник</div><div class="h-cell val">Закрыто</div>
       </div>
     </div>
     <div>
-      <p class="s-eye" data-words>Correspondence</p>
-      <h2 class="s-title" data-words>Find Us</h2>
-      <div class="s-rule"></div>
-      <p style="font-size:clamp(14px,2.5vw,16px);font-style:italic;color:var(--cream2);line-height:2.1;" data-words>Tashkent City Mall<br>Tashkent, Uzbekistan<br><br>+998 98 000 00 00<br>hello@aurum.uz</p>
-      <div style="margin-top:1.5rem;">
-        <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;color:rgba(201,169,110,.4);text-transform:uppercase;margin-bottom:8px;">Valet parking from 5:00 pm daily</p>
-        <button class="btn-solid" style="font-size:9px;padding:11px 24px;" onclick="openOverlay('reserve')">Reserve Tonight</button>
+      <p class="s-eye" data-words style="text-align:center;justify-content:center;">Корреспонденция</p>
+      <h2 class="s-title" data-words style="text-align:center;">Найдите Нас</h2>
+      <div class="s-rule" style="margin:0 auto;"></div>
+
+      <!-- LOCATION CARD -->
+      <div class="location-card">
+        <div class="location-pin-wrap">
+          <svg width="18" height="24" viewBox="0 0 18 24" fill="none" aria-hidden="true">
+            <path d="M9 0C4 0 0 4.1 0 9.2C0 15.6 9 24 9 24C9 24 18 15.6 18 9.2C18 4.1 14 0 9 0Z" fill="none" stroke="url(#gPin)" stroke-width="1"/>
+            <circle cx="9" cy="9" r="3" fill="none" stroke="url(#gPin)" stroke-width="1"/>
+            <defs><linearGradient id="gPin" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B6914"/><stop offset="100%" stop-color="#E8CC8F"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="location-address">
+          <p class="location-venue">Tashkent City Mall</p>
+          <p class="location-city">Ташкент, Узбекистан</p>
+        </div>
+        <div class="location-divider"></div>
+        <div class="location-contact-row">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:2px;">
+            <path d="M2 1h3l1.5 3.5-1.5 1a8 8 0 003.5 3.5l1-1.5L13 9v3c0 .5-.5 1-1 1C5 13 1 9 1 2c0-.5.5-1 1-1z" fill="none" stroke="url(#gPhone)" stroke-width="1" stroke-linejoin="round"/>
+            <defs><linearGradient id="gPhone" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B6914"/><stop offset="100%" stop-color="#E8CC8F"/></linearGradient></defs>
+          </svg>
+          <p class="location-phone-label">Связаться по телефону:</p>
+        </div>
+        <a href="tel:+998980000000" class="location-phone">+998 98 000 00 00</a>
+        <div class="location-divider"></div>
+        <p class="location-valet">Парковка с услугой валет с 17:00 ежедневно</p>
+        <button class="btn-solid" style="font-size:9px;padding:11px 24px;margin-top:1.2rem;" onclick="openOverlay('reserve')">Забронировать на Сегодня</button>
       </div>
     </div>
   </div>
@@ -731,38 +808,53 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <!-- TESTIMONIALS -->
 <section class="testi-section" id="testi-s">
   <div style="text-align:center;margin-bottom:0;">
-    <p class="s-eye" style="justify-content:center;" data-words>Guest Voices</p>
-    <h2 class="s-title" style="text-align:center;" data-words>Evenings Remembered</h2>
+    <p class="s-eye" style="justify-content:center;" data-words>Голоса Гостей</p>
+    <h2 class="s-title" style="text-align:center;" data-words>Вечера, Которые Помнят</h2>
     <div class="s-rule" style="margin:0 auto;"></div>
   </div>
-  <div class="testi-grid">
+  <div class="testi-grid" id="testi-grid-live">
     <div class="testi-card">
       <div class="testi-stars">
         <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
       </div>
-      <p class="testi-body" data-words>The Wagyu course stopped time. Our sommelier remembered my wife's preference from a visit eighteen months prior without being told. That is not service — that is memory made into ritual.</p>
+      <p class="testi-body" data-words>Курс Вагю остановил время. Наш сомелье вспомнил предпочтения моей жены с визита восемнадцать месяцев назад без подсказки. Это не сервис — это память, превращённая в ритуал.</p>
       <div class="testi-rule"></div>
       <p class="testi-name">James & Sophia R.</p>
-      <p class="testi-src">London · Anniversary Dinner</p>
+      <p class="testi-src">Лондон · Годовщина</p>
     </div>
     <div class="testi-card">
       <div class="testi-stars">
         <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
       </div>
-      <p class="testi-body" data-words>Seven courses, each one more precise than the last. The truffle velouté arrived with a shaving done tableside — a gesture so simple it reduced the table to silence. I have dined at sixteen three-starred restaurants. Aurum belongs at the very top.</p>
+      <p class="testi-body" data-words>Семь курсов, каждый точнее предыдущего. Велюте из трюфелей подали со стружкой, сделанной у стола — жест настолько простой, что весь зал умолк. Я обедал в шестнадцати трёхзвёздочных ресторанах. Aurum — на самом верху.</p>
       <div class="testi-rule"></div>
-      <p class="testi-name">Dr. Karim N.</p>
-      <p class="testi-src">Dubai · Business Dinner</p>
+      <p class="testi-name">Д-р Karim N.</p>
+      <p class="testi-src">Дубай · Деловой Ужин</p>
     </div>
     <div class="testi-card">
       <div class="testi-stars">
         <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
       </div>
-      <p class="testi-body" data-words>We proposed here and it will be impossible to return to ordinary life after. The team arranged everything without a single prompt from us. The Champagne appeared before we even spoke. Two hours felt like a lifetime and a breath simultaneously.</p>
+      <p class="testi-body" data-words>Мы сделали предложение здесь, и вернуться к обычной жизни после этого невозможно. Команда организовала всё без единой просьбы с нашей стороны. Шампанское появилось прежде, чем мы успели сказать слово.</p>
       <div class="testi-rule"></div>
       <p class="testi-name">Lena & Marco V.</p>
-      <p class="testi-src">Milan · Engagement Evening</p>
+      <p class="testi-src">Милан · Помолвка</p>
     </div>
+  </div>
+
+  <!-- INTERACTIVE RATING SECTION -->
+  <div class="rating-section" id="rating-section">
+    <div class="rating-deco-line"></div>
+    <p class="rating-invite" id="rating-invite">Оцените ваш вечер в Aurum</p>
+    <div class="rating-stars-wrap" id="rating-stars-wrap">
+      <svg class="rating-star" data-v="1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/><defs><linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B6914"/><stop offset="100%" stop-color="#E8CC8F"/></linearGradient></defs></svg>
+      <svg class="rating-star" data-v="2" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
+      <svg class="rating-star" data-v="3" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
+      <svg class="rating-star" data-v="4" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
+      <svg class="rating-star" data-v="5" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><polygon class="rstar-poly" points="20,3 24.6,14.6 37,15.5 28,23.3 31.1,36 20,29.5 8.9,36 12,23.3 3,15.5 15.4,14.6"/></svg>
+    </div>
+    <button class="rating-submit-btn" id="rating-submit-btn" onclick="submitRating()" style="display:none;">Оставить Отзыв</button>
+    <p class="rating-locked-msg" id="rating-locked-msg" style="display:none;"></p>
   </div>
 </section>
 
@@ -772,47 +864,46 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
   <div class="f-inner">
     <span class="f-logo">A U R U M</span>
     <ul class="f-links">
-      <li><a href="#">Private Dining</a></li>
-      <li><a href="#">Press</a></li>
-      <li><a href="#">Bespoke Gifting</a></li>
-      <li><a href="#">Careers</a></li>
+      <li><a href="#">Приватные Ужины</a></li>
+      <li><a href="#">Пресса</a></li>
+      <li><a href="#">Подарочные Сертификаты</a></li>
+      <li><a href="#">Карьера</a></li>
     </ul>
     <span class="f-copy">© 2026 Aurum Restaurant Group</span>
   </div>
-  <p class="f-credit">Made Of Love By Khodjiev F</p>
 </footer>
 
 <!-- GUEST LOGIN/RESERVE MODAL -->
 <div class="overlay" id="overlay-reserve">
   <div class="modal">
     <button class="modal-close" onclick="closeOverlay('reserve')">✕</button>
-    <p class="m-eye2">Members' Access</p>
-    <h2 class="m-title">Secure Your Table</h2>
+    <p class="m-eye2">Доступ Для Гостей</p>
+    <h2 class="m-title">Забронировать Стол</h2>
     <div class="m-tabs2">
-      <button class="m-tab2 on" onclick="switchAuth('login',this)">Sign In</button>
-      <button class="m-tab2" onclick="switchAuth('signup',this)">Create Account</button>
+      <button class="m-tab2 on" onclick="switchAuth('login',this)">Войти</button>
+      <button class="m-tab2" onclick="switchAuth('signup',this)">Создать Аккаунт</button>
     </div>
 
     <div id="auth-login">
-      <p class="f-err" id="login-err">Invalid credentials. Please try again.</p>
-      <label class="f-lbl">Email Address</label>
-      <input class="f-input" type="email" id="login-email" placeholder="your@email.com">
-      <label class="f-lbl">Password</label>
+      <p class="f-err" id="login-err">Неверные данные. Попробуйте снова.</p>
+      <label class="f-lbl">Адрес Электронной Почты</label>
+      <input class="f-input" type="email" id="login-email" placeholder="ваш@email.com">
+      <label class="f-lbl">Пароль</label>
       <input class="f-input" type="password" id="login-pass" placeholder="••••••••">
-      <button class="f-submit" onclick="doLogin()">Sign In & Continue</button>
+      <button class="f-submit" onclick="doLogin()">Войти & Продолжить</button>
     </div>
 
     <div id="auth-signup" style="display:none;">
       <p class="f-err" id="signup-err"></p>
       <div class="f-row">
-        <div><label class="f-lbl">First Name</label><input class="f-input" id="su-first" placeholder="First"></div>
-        <div><label class="f-lbl">Last Name</label><input class="f-input" id="su-last" placeholder="Last"></div>
+        <div><label class="f-lbl">Имя</label><input class="f-input" id="su-first" placeholder="Имя"></div>
+        <div><label class="f-lbl">Фамилия</label><input class="f-input" id="su-last" placeholder="Фамилия"></div>
       </div>
-      <label class="f-lbl">Email Address</label>
-      <input class="f-input" type="email" id="su-email" placeholder="your@email.com">
-      <label class="f-lbl">Password</label>
-      <input class="f-input" type="password" id="su-pass" placeholder="Min. 6 characters">
-      <button class="f-submit" onclick="doSignup()">Create Account</button>
+      <label class="f-lbl">Адрес Электронной Почты</label>
+      <input class="f-input" type="email" id="su-email" placeholder="ваш@email.com">
+      <label class="f-lbl">Пароль</label>
+      <input class="f-input" type="password" id="su-pass" placeholder="Минимум 6 символов">
+      <button class="f-submit" onclick="doSignup()">Создать Аккаунт</button>
     </div>
   </div>
 </div>
@@ -821,14 +912,14 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <div class="overlay" id="overlay-admin-login">
   <div class="modal" style="max-width:400px;">
     <button class="modal-close" onclick="closeOverlay('admin-login')">✕</button>
-    <p class="m-eye2">Staff Access</p>
-    <h2 class="m-title">Administration</h2>
-    <p class="f-err" id="admin-login-err">Invalid credentials. Access denied.</p>
-    <label class="f-lbl">Administrator Email</label>
+    <p class="m-eye2">Доступ Персонала</p>
+    <h2 class="m-title">Администрация</h2>
+    <p class="f-err" id="admin-login-err">Неверные данные. Доступ запрещён.</p>
+    <label class="f-lbl">Email Администратора</label>
     <input class="f-input" type="email" id="admin-email" placeholder="adminpanel@gmail.com">
-    <label class="f-lbl">Password</label>
+    <label class="f-lbl">Пароль</label>
     <input class="f-input" type="password" id="admin-pass" placeholder="••••••••">
-    <button class="f-submit" onclick="doAdminLogin()">Access Panel</button>
+    <button class="f-submit" onclick="doAdminLogin()">Войти в Панель</button>
   </div>
 </div>
 
@@ -836,36 +927,34 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <div class="overlay" id="overlay-booking">
   <div class="modal" style="max-width:500px;">
     <button class="modal-close" onclick="closeOverlay('booking')">✕</button>
-    <p class="m-eye2">Reservation</p>
-    <h2 class="m-title">Your Evening at Aurum</h2>
+    <p class="m-eye2">Бронирование</p>
+    <h2 class="m-title">Ваш Вечер в Aurum</h2>
     <p class="f-err" id="book-err"></p>
 
     <div class="f-row">
-      <div><label class="f-lbl">Date</label><input class="f-input" type="date" id="b-date"></div>
-      <div><label class="f-lbl">Guests</label>
+      <div><label class="f-lbl">Дата</label><input class="f-input" type="date" id="b-date"></div>
+      <div><label class="f-lbl">Гости</label>
         <select class="f-input" id="b-guests">
-          <option value="">Select</option>
+          <option value="">Выбрать</option>
           <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
         </select>
       </div>
     </div>
     <div class="f-row">
-      <div><label class="f-lbl">Seating</label>
-        <select class="f-input" id="b-time">
-          <option value="">Select</option>
-          <option>6:00 pm</option><option>8:30 pm</option>
-        </select>
+      <div>
+        <label class="f-lbl">Время (например, 19:30)</label>
+        <input class="f-input" type="time" id="b-time" min="17:30" max="23:00" step="900" placeholder="ЧЧ:ММ">
       </div>
-      <div><label class="f-lbl">Occasion</label>
+      <div><label class="f-lbl">Повод</label>
         <select class="f-input" id="b-occasion">
-          <option value="">Select</option>
-          <option>Anniversary</option><option>Birthday</option><option>Proposal</option><option>Business</option><option>General Dining</option>
+          <option value="">Выбрать</option>
+          <option>Годовщина</option><option>День Рождения</option><option>Предложение</option><option>Деловой Ужин</option><option>Общий Ужин</option>
         </select>
       </div>
     </div>
-    <label class="f-lbl">Special Requests</label>
-    <input class="f-input" id="b-notes" placeholder="Dietary requirements, allergies, ambience...">
-    <button class="f-submit" onclick="doBooking()">Confirm Reservation</button>
+    <label class="f-lbl">Особые Пожелания</label>
+    <input class="f-input" id="b-notes" placeholder="Диетические требования, аллергии, пожелания по атмосфере...">
+    <button class="f-submit" onclick="doBooking()">Подтвердить Бронирование</button>
   </div>
 </div>
 
@@ -878,15 +967,15 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
         <polyline class="success-check-tick" points="20,36 30,46 50,26"/>
       </svg>
     </div>
-    <h2 class="success-heading">Table Reserved</h2>
+    <h2 class="success-heading">Стол Забронирован</h2>
     <div class="success-summary">
-      <div class="success-row"><span class="success-lbl">Date</span><span class="success-val" id="sc-date">—</span></div>
-      <div class="success-row"><span class="success-lbl">Time</span><span class="success-val" id="sc-time">—</span></div>
-      <div class="success-row"><span class="success-lbl">Party Size</span><span class="success-val" id="sc-guests">—</span></div>
-      <div class="success-row"><span class="success-lbl">Occasion</span><span class="success-val" id="sc-occ">—</span></div>
+      <div class="success-row"><span class="success-lbl">Дата</span><span class="success-val" id="sc-date">—</span></div>
+      <div class="success-row"><span class="success-lbl">Время</span><span class="success-val" id="sc-time">—</span></div>
+      <div class="success-row"><span class="success-lbl">Гостей</span><span class="success-val" id="sc-guests">—</span></div>
+      <div class="success-row"><span class="success-lbl">Повод</span><span class="success-val" id="sc-occ">—</span></div>
     </div>
-    <button class="success-close" onclick="closeSuccess()">Dismiss</button>
-    <p class="success-timer" id="sc-timer">Closing in 5 seconds…</p>
+    <button class="success-close" onclick="closeSuccess()">Закрыть</button>
+    <p class="success-timer" id="sc-timer">Закрытие через 5 секунд…</p>
   </div>
 </div>
 
@@ -894,34 +983,44 @@ footer{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,3.5rem);border-top:.5px s
 <div class="admin-wrap" id="admin-panel">
   <div class="admin-inner">
     <div class="a-head">
-      <span class="a-logo">A U R U M · Administration</span>
+      <span class="a-logo">A U R U M · Администрация</span>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="a-close" onclick="exportCSV()">↓ Export CSV</button>
-        <button class="a-close" onclick="closeAdmin()">✕ Close Panel</button>
+        <button class="a-close" onclick="exportCSV()">↓ Экспорт CSV</button>
+        <button class="a-close" onclick="closeAdmin()">✕ Закрыть Панель</button>
       </div>
     </div>
     <div class="a-stats" id="admin-stats">
-      <div class="a-stat"><p class="a-stat-n" id="stat-total">0</p><p class="a-stat-l">Total Reservations</p></div>
-      <div class="a-stat"><p class="a-stat-n" id="stat-tonight">0</p><p class="a-stat-l">Tonight's Seatings</p></div>
-      <div class="a-stat"><p class="a-stat-n" id="stat-covers">0</p><p class="a-stat-l">Total Covers</p></div>
+      <div class="a-stat"><p class="a-stat-n" id="stat-total">0</p><p class="a-stat-l">Всего Броней</p></div>
+      <div class="a-stat"><p class="a-stat-n" id="stat-tonight">0</p><p class="a-stat-l">Сегодня</p></div>
+      <div class="a-stat"><p class="a-stat-n" id="stat-covers">0</p><p class="a-stat-l">Всего Гостей</p></div>
     </div>
     <div class="a-filter" id="admin-filter">
-      <button class="a-filter-btn on" onclick="filterAdmin('all',this)">All</button>
-      <button class="a-filter-btn" onclick="filterAdmin('today',this)">Today</button>
-      <button class="a-filter-btn" onclick="filterAdmin('upcoming',this)">Upcoming</button>
-      <button class="a-filter-btn" onclick="filterAdmin('past',this)">Past</button>
-      <button class="a-filter-btn" onclick="filterAdmin('pending',this)">Pending</button>
-      <button class="a-filter-btn" onclick="filterAdmin('confirmed',this)">Confirmed</button>
+      <button class="a-filter-btn on" onclick="filterAdmin('all',this)">Все</button>
+      <button class="a-filter-btn" onclick="filterAdmin('today',this)">Сегодня</button>
+      <button class="a-filter-btn" onclick="filterAdmin('upcoming',this)">Предстоящие</button>
+      <button class="a-filter-btn" onclick="filterAdmin('past',this)">Прошедшие</button>
+      <button class="a-filter-btn" onclick="filterAdmin('pending',this)">Ожидают</button>
+      <button class="a-filter-btn" onclick="filterAdmin('confirmed',this)">Подтверждены</button>
     </div>
-    <p class="a-section-title">Reservations Log</p>
+    <p class="a-section-title">Журнал Бронирований</p>
     <div class="a-tbl-wrap">
       <div class="a-tbl-head">
-        <span>Guest</span><span>Email</span><span>Date · Time</span><span>Party · Occasion</span><span>Status · Booked At</span>
+        <span>Гость</span><span>Email</span><span>Дата · Время</span><span>Компания · Повод</span><span>Статус · Забронировано</span><span>Рейтинг</span>
       </div>
       <div id="admin-rows"></div>
     </div>
+
+    <!-- FEEDBACK LOG -->
+    <p class="a-section-title" style="margin-top:2rem;">Журнал Отзывов</p>
+    <div class="a-tbl-wrap">
+      <div class="a-tbl-head" style="grid-template-columns:1fr 1fr 1fr;">
+        <span>Гость</span><span>Email</span><span>Рейтинг</span>
+      </div>
+      <div id="admin-feedback-rows"></div>
+    </div>
+
     <div style="margin-top:1.5rem;text-align:right;">
-      <button class="a-close" onclick="doAdminLogout()">Sign Out</button>
+      <button class="a-close" onclick="doAdminLogout()">Выйти</button>
     </div>
   </div>
 </div>
@@ -1139,6 +1238,7 @@ function doLogin(){
   saveSession(user);
   closeOverlay('reserve');
   openOverlay('booking');
+  setTimeout(initRating, 100);
 }
 
 function doSignup(){
@@ -1158,6 +1258,7 @@ function doSignup(){
   saveSession(newUser);
   closeOverlay('reserve');
   openOverlay('booking');
+  setTimeout(initRating, 100);
 }
 
 /* ── ADMIN AUTH ── */
@@ -1282,27 +1383,31 @@ function renderAdmin(){
 
   const cont=document.getElementById('admin-rows');
   if(!rows.length){
-    cont.innerHTML='<div class="a-empty">No reservations match this filter.</div>';
+    cont.innerHTML='<div class="a-empty">Нет броней по данному фильтру.</div>';
     return;
   }
   cont.innerHTML=rows.map(r=>{
-    const bookedAt=r.reservedAtFull?new Date(r.reservedAtFull).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):r.reservedAt;
-    // FIX: XSS — escape user-supplied strings before innerHTML
-    const safe=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const bookedAt=r.reservedAtFull?new Date(r.reservedAtFull).toLocaleString('ru-RU',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):r.reservedAt;
+    const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const user=DB.users.find(u=>u.email===r.email);
+    const uRating=user?user.rating:0;
+    const starsHtml=Array.from({length:5},(_,i)=>`<span style="color:${i<(uRating||0)?'var(--gold)':'rgba(201,169,110,.18)'};font-size:12px;">★</span>`).join('');
     return `<div class="a-row">
-      <span class="a-cell name">${safe(r.name)}</span>
-      <span class="a-cell" style="font-size:11px;">${safe(r.email)||'—'}</span>
-      <span class="a-cell">${safe(r.date)} · ${safe(r.time)}</span>
-      <span class="a-cell">${safe(r.guests)} guests<br><span style="font-size:10px;color:var(--cream3);font-style:italic;">${safe(r.occasion)}</span></span>
+      <span class="a-cell name">${esc(r.name)}</span>
+      <span class="a-cell" style="font-size:11px;">${esc(r.email)||'—'}</span>
+      <span class="a-cell">${esc(r.date)} · ${esc(r.time)}</span>
+      <span class="a-cell">${esc(r.guests)} гост.<br><span style="font-size:10px;color:var(--cream3);font-style:italic;">${esc(r.occasion)}</span></span>
       <span class="a-cell">
-        <span class="a-badge ${r.status==='confirmed'?'badge-conf':r.occasion==='Proposal'?'badge-vip':'badge-pend'}">
-          ${r.status==='confirmed'?'Confirmed':r.occasion==='Proposal'?'VIP ✦':'Pending'}
+        <span class="a-badge ${r.status==='confirmed'?'badge-conf':r.occasion==='Предложение'?'badge-vip':'badge-pend'}">
+          ${r.status==='confirmed'?'Подтверждено':r.occasion==='Предложение'?'VIP ✦':'Ожидает'}
         </span><br>
         <span style="font-size:10px;color:var(--cream3);">${bookedAt}</span>
-        ${r.status==='pending'?`<br><button onclick="confirmRes(${r.id})" style="margin-top:4px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.15em;text-transform:uppercase;background:transparent;border:.5px solid rgba(124,191,142,.3);color:rgba(124,191,142,.7);padding:3px 8px;cursor:pointer;min-height:28px;">Confirm</button>`:''}
+        ${r.status==='pending'?`<br><button onclick="confirmRes(${r.id})" style="margin-top:4px;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.15em;text-transform:uppercase;background:transparent;border:.5px solid rgba(124,191,142,.3);color:rgba(124,191,142,.7);padding:3px 8px;cursor:pointer;min-height:28px;">Подтвердить</button>`:''}
       </span>
+      <span class="a-cell">${starsHtml}</span>
     </div>`;
   }).join('');
+  renderAdminFeedback();
 }
 
 function confirmRes(id){
@@ -1318,14 +1423,130 @@ function filterAdmin(f,btn){
 
 /* ── ADMIN: export reservations as CSV ── */
 function exportCSV(){
-  const headers=['ID','Name','Email','Date','Time','Guests','Occasion','Notes','Status','Reserved At'];
-  const rows=DB.reservations.map(r=>[r.id,r.name,r.email,r.date,r.time,r.guests,r.occasion,r.notes||'',r.status,r.reservedAt]);
+  const headers=['ID','Имя','Email','Дата','Время','Гости','Повод','Заметки','Статус','Забронировано','Рейтинг'];
+  const rows=DB.reservations.map(r=>[r.id,r.name,r.email,r.date,r.time,r.guests,r.occasion,r.notes||'',r.status,r.reservedAt,r.rating||'—']);
   const csv=[headers,...rows].map(r=>r.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(',')).join('\n');
   const a=document.createElement('a');
   a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
   a.download='aurum-reservations-'+new Date().toISOString().split('T')[0]+'.csv';
   a.click();
 }
+
+/* ── RATING SYSTEM ── */
+let selectedRating = 0;
+
+function initRating(){
+  const wrap = document.getElementById('rating-stars-wrap');
+  const submitBtn = document.getElementById('rating-submit-btn');
+  const lockedMsg = document.getElementById('rating-locked-msg');
+  const invite = document.getElementById('rating-invite');
+  if(!wrap) return;
+
+  const stars = wrap.querySelectorAll('.rating-star');
+
+  // Check if user is logged in and has already rated
+  if(DB.session && DB.session.role === 'guest'){
+    const user = DB.users.find(u => u.email === DB.session.email);
+    if(user && user.rating){
+      // State 3: Already rated — show locked filled stars
+      const r = user.rating;
+      stars.forEach((s,i) => {
+        s.classList.add('locked');
+        if(i < r) s.classList.add('selected');
+      });
+      invite.textContent = 'Ваша оценка сохранена';
+      lockedMsg.textContent = 'Вы уже оставили ' + r + ' ' + (r===1?'звезду':r<5?'звезды':'звёзд') + '. Спасибо.';
+      lockedMsg.style.display = 'block';
+      return;
+    }
+    // State 1: Logged in, not yet rated — interactive
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => {
+        const v = parseInt(star.dataset.v);
+        stars.forEach((s,i) => s.classList.toggle('hovered', i < v));
+      });
+      star.addEventListener('mouseleave', () => {
+        stars.forEach(s => s.classList.remove('hovered'));
+      });
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.v);
+        stars.forEach((s,i) => s.classList.toggle('selected', i < selectedRating));
+        submitBtn.style.display = 'inline-block';
+      });
+    });
+  } else {
+    // Not logged in — prompt to log in
+    invite.textContent = 'Войдите, чтобы оценить ваш вечер';
+    stars.forEach(s => { s.classList.add('locked'); s.style.opacity='.3'; });
+  }
+}
+
+function submitRating(){
+  if(!selectedRating || !DB.session) return;
+  const user = DB.users.find(u => u.email === DB.session.email);
+  if(!user || user.rating) return; // already rated, no second chance
+
+  // Save rating to user account
+  user.rating = selectedRating;
+  user.ratedAt = new Date().toISOString();
+  saveUsers();
+
+  // Lock stars visually
+  const stars = document.querySelectorAll('.rating-star');
+  stars.forEach(s => s.classList.add('locked'));
+  document.getElementById('rating-submit-btn').style.display = 'none';
+  document.getElementById('rating-invite').textContent = 'Ваша оценка сохранена';
+  document.getElementById('rating-locked-msg').textContent = 'Спасибо! Вы поставили ' + selectedRating + ' ' + (selectedRating===1?'звезду':selectedRating<5?'звезды':'звёзд') + '.';
+  document.getElementById('rating-locked-msg').style.display = 'block';
+
+  // Dynamically inject live review card into testimonials
+  injectLiveReview(user, selectedRating);
+
+  // Update admin feedback log
+  if(DB.session.role === 'admin') renderAdminFeedback();
+}
+
+function injectLiveReview(user, rating){
+  const grid = document.getElementById('testi-grid-live');
+  if(!grid) return;
+  const starsHtml = Array.from({length:5},(_,i)=>
+    `<span class="testi-star" style="color:${i<rating?'var(--gold)':'rgba(201,169,110,.2)'};">★</span>`
+  ).join('');
+  const card = document.createElement('div');
+  card.className = 'testi-card user-review';
+  card.innerHTML = `
+    <div class="testi-stars">${starsHtml}</div>
+    <p class="testi-body">— ${safe(user.name)}</p>
+    <div class="testi-rule"></div>
+    <p class="testi-name">${safe(user.name)}</p>
+    <p class="testi-src">Гость Aurum · ${new Date().toLocaleDateString('ru-RU',{month:'long',day:'numeric',year:'numeric'})}</p>
+  `;
+  grid.appendChild(card);
+}
+
+function renderAdminFeedback(){
+  const cont = document.getElementById('admin-feedback-rows');
+  if(!cont) return;
+  const ratedUsers = DB.users.filter(u => u.role === 'guest');
+  if(!ratedUsers.length){
+    cont.innerHTML = '<div class="a-empty">Нет зарегистрированных аккаунтов.</div>';
+    return;
+  }
+  cont.innerHTML = ratedUsers.map(u => {
+    const r = u.rating || 0;
+    const starsHtml = Array.from({length:5},(_,i)=>
+      `<span style="color:${i<r?'var(--gold)':'rgba(201,169,110,.18)'};font-size:13px;">★</span>`
+    ).join('');
+    return `<div class="a-row" style="grid-template-columns:1fr 1fr 1fr;">
+      <span class="a-cell name">${safe(u.name)}</span>
+      <span class="a-cell" style="font-size:11px;">${safe(u.email)}</span>
+      <span class="a-cell">${starsHtml} ${r>0?'('+r+'/5)':'<span style="font-size:10px;color:rgba(201,169,110,.35);font-style:italic;">Не оценил</span>'}</span>
+    </div>`;
+  }).join('');
+}
+
+/* helper — safe HTML escape (already defined in renderAdmin, redefined here for use in rating) */
+function safe(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ── AUDIO — YouTube IFrame API ── */
 const YT_VIDEO_ID='ejaaxLeUQd4';
@@ -1374,6 +1595,7 @@ if(dw&&di){
 /* ── INIT ── */
 loadPersisted();
 initKenBurns();
+initRating();
 
 /* ── SET MIN DATE on booking form ── */
 (function(){
