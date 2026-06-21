@@ -1137,18 +1137,15 @@ function loadPersisted(){
 
 function saveReviews(){
   try { localStorage.setItem('aurum_reviews', JSON.stringify(DB.reviews)); } catch(e){}
-  // Also save latest review to Supabase
+  // Save to Supabase so ALL visitors see it globally
   const latest = DB.reviews[DB.reviews.length - 1];
   if(latest && _SB){
-    _SB.auth.getUser().then(({data})=>{
-      _SB.from('reviews').upsert({
-        user_id:     data.user ? data.user.id : null,
-        name:        latest.name,
-        email:       latest.email,
-        stars:       latest.rating,
-        review_text: latest.reviewText || ''
-      }, { onConflict: 'email' }).then(({error})=>{ if(error) console.warn('Supabase review save:', error.message); });
-    });
+    _SB.from('reviews').upsert({
+      name:        latest.name,
+      email:       latest.email,
+      stars:       latest.rating,
+      review_text: latest.reviewText || ''
+    }, { onConflict: 'email' }).then(({error})=>{ if(error) console.warn('Supabase review save:', error.message); });
   }
 }
 
@@ -1690,8 +1687,25 @@ function injectLiveReview(reviewEntry, isNew){
 }
 
 function loadPersistedReviews(){
-  if(!DB.reviews || !DB.reviews.length) return;
-  DB.reviews.forEach(r => injectLiveReview(r, false));
+  // Load local reviews first (instant)
+  if(DB.reviews && DB.reviews.length) DB.reviews.forEach(r => injectLiveReview(r, false));
+
+  // Then fetch ALL reviews from Supabase (every device, every user)
+  if(_SB){
+    _SB.from('reviews').select('*').order('created_at', { ascending: false }).then(({data, error})=>{
+      if(error || !data) return;
+      data.forEach(r => {
+        const entry = {
+          email:      r.email,
+          name:       r.name,
+          rating:     r.stars,
+          reviewText: r.review_text || '',
+          ratedAt:    r.created_at
+        };
+        injectLiveReview(entry, false);
+      });
+    });
+  }
 }
 
 function renderAdminFeedback(){
